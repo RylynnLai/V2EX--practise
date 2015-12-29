@@ -1,0 +1,35 @@
+//
+//  PrefixHeader.pch
+//  V2EX
+//
+//  Created by ucs on 15/12/21.
+//  Copyright © 2015年 ucs. All rights reserved.
+//
+
+#define DEBUG 1
+// __OBJC__:每一个OC文件都会导入这个宏
+#ifdef __OBJC__
+
+
+// 自定义Log
+// 拥有可变参数
+// ...:宏里面的可变参数
+// __VA_ARGS__:函数中的可变参数
+#ifdef DEBUG
+// 调试阶段
+#define RLLog(...)  NSLog(__VA_ARGS__)
+#else
+// 发布阶段
+#define RLLog(...)
+#endif
+
+#define screenW [UIScreen mainScreen].bounds.size.width
+#define screenH [UIScreen mainScreen].bounds.size.height
+
+#import "RLNetWorkManager.h"
+
+#import "UIButton+WebCache.h"
+
+#import "MJRefresh.h"
+
+#endif
