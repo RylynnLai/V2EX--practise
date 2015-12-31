@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
+		1C5001B61C35277800A0D268 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5001B51C35277800A0D268 /* Foundation+Log.m */; };
 		1C680F3C1C3271F2007A2C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1C1C3271F2007A2C19 /* Assets.xcassets */; };
 		1C680F3D1C3271F2007A2C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1D1C3271F2007A2C19 /* LaunchScreen.storyboard */; };
 		1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F221C3271F2007A2C19 /* RLTabbarVC.m */; };
@@ -23,9 +24,12 @@
 		1C680F5E1C3273A8007A2C19 /* RLTopicesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F571C3273A8007A2C19 /* RLTopicesTVC.m */; };
 		1C680F5F1C3273A8007A2C19 /* RLTopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F5A1C3273A8007A2C19 /* RLTopicDetailVC.m */; };
 		1C680F601C3273A8007A2C19 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F5B1C3273A8007A2C19 /* RLTopicDetailVC.xib */; };
+		1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F621C327D34007A2C19 /* NSString+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C5001B51C35277800A0D268 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		1C680F1C1C3271F2007A2C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C680F1E1C3271F2007A2C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C680F1F1C3271F2007A2C19 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 		1C680F591C3273A8007A2C19 /* RLTopicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicDetailVC.h; sourceTree = "<group>"; };
 		1C680F5A1C3273A8007A2C19 /* RLTopicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicDetailVC.m; sourceTree = "<group>"; };
 		1C680F5B1C3273A8007A2C19 /* RLTopicDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicDetailVC.xib; sourceTree = "<group>"; };
+		1C680F611C327D34007A2C19 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		1C680F621C327D34007A2C19 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		1CF13A031C1EB27E00674513 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		920F8A219D83A1242B0A01BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,9 +134,12 @@
 		1C680F331C3271F2007A2C19 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1C5001B51C35277800A0D268 /* Foundation+Log.m */,
 				1C680F341C3271F2007A2C19 /* NSString+HTMLTool.h */,
 				1C680F351C3271F2007A2C19 /* NSString+HTMLTool.m */,
 				1C680F361C3271F2007A2C19 /* Single.h */,
+				1C680F611C327D34007A2C19 /* NSString+Extension.h */,
+				1C680F621C327D34007A2C19 /* NSString+Extension.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 		48136B311EB4F8076D008DF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */,
 				920F8A219D83A1242B0A01BE /* libPods.a */,
 			);
 			name = Frameworks;
@@ -332,12 +342,14 @@
 				1C680F5C1C3273A8007A2C19 /* RLTopicCell.m in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
+				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
 				1C680F4F1C32738C007A2C19 /* RLMember.m in Sources */,
 				1C680F511C32738C007A2C19 /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				1C680F5F1C3273A8007A2C19 /* RLTopicDetailVC.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				1C680F5E1C3273A8007A2C19 /* RLTopicesTVC.m in Sources */,
+				1C5001B61C35277800A0D268 /* Foundation+Log.m in Sources */,
 				1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */,
 				1C680F501C32738C007A2C19 /* RLNode.m in Sources */,
 			);

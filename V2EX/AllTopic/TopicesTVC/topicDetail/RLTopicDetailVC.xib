@@ -10,6 +10,7 @@
                 <outlet property="authorBtn" destination="ErG-jx-a5A" id="fPg-VU-vrD"/>
                 <outlet property="authorLable" destination="0sp-eI-W9V" id="3IY-Dm-9OI"/>
                 <outlet property="createdTimeLable" destination="noR-95-hj3" id="g9t-wn-36Q"/>
+                <outlet property="replieNumLable" destination="xZZ-WD-We0" id="Kh7-mS-Jkg"/>
                 <outlet property="titleLable" destination="SJo-ai-clX" id="3si-zC-juK"/>
                 <outlet property="view" destination="CdO-lR-49e" id="GP3-nK-n0p"/>
             </connections>
@@ -23,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJo-ai-clX">
-                            <rect key="frame" x="55" y="9" width="310" height="42"/>
+                            <rect key="frame" x="60" y="9" width="305" height="42"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="0pe-T2-DWK"/>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="310" id="6Qp-ig-YR9"/>
@@ -123,7 +124,7 @@
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SJo-ai-clX" secondAttribute="trailing" constant="10" id="oKq-52-BeE"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xZZ-WD-We0" secondAttribute="trailing" constant="10" id="oz3-U4-jc1"/>
                         <constraint firstItem="0sp-eI-W9V" firstAttribute="leading" secondItem="ErG-jx-a5A" secondAttribute="leading" id="sWd-G0-XRG"/>
-                        <constraint firstItem="SJo-ai-clX" firstAttribute="leading" secondItem="ErG-jx-a5A" secondAttribute="trailing" constant="5" id="wym-j8-fBi"/>
+                        <constraint firstItem="SJo-ai-clX" firstAttribute="leading" secondItem="ErG-jx-a5A" secondAttribute="trailing" constant="10" id="wym-j8-fBi"/>
                         <constraint firstItem="noR-95-hj3" firstAttribute="height" secondItem="0sp-eI-W9V" secondAttribute="height" id="z3A-ly-xXR"/>
                     </constraints>
                     <variation key="default">

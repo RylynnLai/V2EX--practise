@@ -11,9 +11,14 @@
 
 typedef void(^successBlock) (id response);
 typedef void(^errorBlock)();
+
+typedef void(^callBackBlock) (NSArray *resArr);
 @interface RLNetWorkManager : NSObject
+
 SingleH(RLNetWorkManager)
 
-
-- (void)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock;
+/**网络请求*/
+- (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock;
+/**请求HTML文本,返回标题字符串*/
+- (NSOperation *)requestHTMLWithPath:(NSString *)path callBackBlock:(callBackBlock)black;
 @end

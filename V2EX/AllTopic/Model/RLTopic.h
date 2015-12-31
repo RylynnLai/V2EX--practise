@@ -43,7 +43,12 @@
 #import "MJExtension.h"
 #import "RLMember.h"
 #import "RLNode.h"
-@class RLMember, RLNode;
+
+
+@class RLMember, RLNode, RLTopic;
+
+typedef void(^callBack) (NSMutableDictionary *indexDic);
+
 @interface RLTopic : NSObject
 
 @property (nonatomic, strong) NSString *ID;
@@ -68,5 +73,5 @@
 
 @property (nonatomic, strong) NSString *last_touched;
 
-
++ (NSMutableArray *)parserHTMLStrs:(NSArray *)resArr callBack:(callBack)block;
 @end

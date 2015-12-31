@@ -8,6 +8,7 @@
 
 #import "RLTopicDetailVC.h"
 #import "NSString+HTMLTool.h"
+#import "NSString+Extension.h"
 #import "RLTopic.h"
 
 @interface RLTopicDetailVC ()<UIWebViewDelegate, UIScrollViewDelegate>
@@ -22,34 +23,50 @@
 
 @implementation RLTopicDetailVC
 
+#pragma mark ------------------------------------------------------------
+#pragma mark 生命周期方法
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initUI];
+    [self initData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    self.navigationController.navigationBar.mj_y = 20;
+}
+
+#pragma mark ------------------------------------------------------------
+#pragma mark 私有方法
+- (void)initUI {
+    [self.view addSubview:self.contentWbV];
+}
+- (void)initData {
+    //文章内容
+    NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
+    [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
+    //头像
+    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_large]];
+    [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
+    //标题
+    _titleLable.text = _topicModel.title;
+    //作者名称
+    _authorLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.member.username];
+    //创建时间
+    NSString *TimeStr = [NSString creatTimeByTimeIntervalSince1970:[_topicModel.created intValue]];
+    _createdTimeLable.text = [NSString stringWithFormat:@"%@ ●", TimeStr];
+    //回复个数
+    _replieNumLable.text = [NSString stringWithFormat:@"%d个回复", [_topicModel.replies intValue]];
+}
+
+#pragma mark ------------------------------------------------------------
+#pragma mark 懒加载
 - (UIWebView *)contentWbV {
     if (!_contentWbV) {
         _contentWbV = [[UIWebView alloc] initWithFrame:CGRectMake(0, _authorLable.mj_h + _authorLable.mj_y, screenW, 10)];
         _contentWbV.delegate = self;
     }
     return _contentWbV;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view addSubview:self.contentWbV];
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.mj_y = 20;
-    
-    NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
-    [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
-    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_large]];
-    [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
-    _titleLable.text = _topicModel.title;
-    _authorLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.member.username];
-}
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
 }
 
 #pragma mark ------------------------------------------------------------
@@ -67,6 +84,7 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
 
 }
+
 
 #pragma mark ------------------------------------------------------------
 #pragma mark UIScrollViewDelegate

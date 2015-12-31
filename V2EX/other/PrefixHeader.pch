@@ -25,6 +25,7 @@
 
 #define screenW [UIScreen mainScreen].bounds.size.width
 #define screenH [UIScreen mainScreen].bounds.size.height
+#define V2EXGray [UIColor colorWithRed:170/255.0 green:176/255.0 blue:197/255.0 alpha:1]
 
 #import "RLNetWorkManager.h"
 

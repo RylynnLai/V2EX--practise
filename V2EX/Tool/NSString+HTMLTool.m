@@ -17,4 +17,5 @@ static NSString *HTNLHead = @"<head><meta charset=\"utf-8\"><meta http-equiv=\"C
     NSString *htmlStr = [NSString stringWithFormat:@"<html><head><meta charset=\"utf-8\"><meta http-equiv=\"Content-Type\"content=text/html; charset=utf-8\"/><style>img{width:%dpx !important;}</style></head> <body>%@</body></html>", (int)screenW - 17, body];
     return htmlStr;
 }
+
 @end

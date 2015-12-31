@@ -8,7 +8,6 @@
 
 #import "RLTopic.h"
 
-
 @implementation RLTopic
 
 - (void)setMember:(RLMember *)member {
@@ -29,6 +28,33 @@
                  };
     }];
     _node = [RLNode mj_objectWithKeyValues:node];
+}
+
++ (NSMutableArray *)parserHTMLStrs:(NSArray *)resArr callBack:(callBack)block{
+    NSRange range;
+    NSString *tempStr;
+    NSMutableArray *topices = [NSMutableArray arrayWithCapacity:resArr.count];
+    NSMutableDictionary *indexDic = [NSMutableDictionary dictionaryWithCapacity:resArr.count];
+    
+    for (int i = 0; i < resArr.count; i ++) {
+        NSString *str = resArr[i];
+        RLTopic *topic = [[RLTopic alloc] init];
+        
+        range = [str rangeOfString:@"#"];
+        topic.ID = [str substringToIndex:range.location];
+        
+        range = [str rangeOfString:@">"];
+        topic.title = [str substringFromIndex:range.location];
+        
+        range = [str rangeOfString:@"reply"];
+        tempStr = [str substringFromIndex:range.location];
+        range = [tempStr rangeOfString:@"\""];
+        topic.replies = [tempStr substringToIndex:range.location];
+        [topices addObject:topic];
+        [indexDic setValue:[NSNumber numberWithInt:i] forKey:topic.ID];
+    }
+    block(indexDic);
+    return topices;
 }
 
 

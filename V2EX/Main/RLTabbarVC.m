@@ -20,6 +20,7 @@
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[RLTopicsTVC alloc] init]];
     [self addChildViewController:nav];
+    
  }
 
 @end

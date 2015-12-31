@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (HTMLTool)
+/**返回用于展示的文章正文*/
 + (NSString *)HTMLstringWithBody:(NSString *)body;
 @end

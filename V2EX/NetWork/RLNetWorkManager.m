@@ -9,7 +9,7 @@
 #import "RLNetWorkManager.h"
 #import "AFNetWorking.h"
 
-static NSString *mainURL = @"https://www.v2ex.com/api";
+static NSString *mainURL = @"https://www.v2ex.com";
 
 @interface RLNetWorkManager ()
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
@@ -22,15 +22,46 @@ static NSString *mainURL = @"https://www.v2ex.com/api";
 SingleM(RLNetWorkManager)
 
 //根据url发送网络请求,block返回
-- (void)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
+- (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
     NSString *URLStr = [mainURL stringByAppendingString:path];
-    [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    
+    NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         RLLog(@"获取网络数据");
         block(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         RLLog(@"%@", error);
     }];
+    return task;
 }
+
+- (NSOperation *)requestHTMLWithPath:(NSString *)path callBackBlock:(callBackBlock)black{
+    NSString *URLStr = [mainURL stringByAppendingString:path];
+    NSURL *url = [NSURL URLWithString:URLStr];
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    __block NSString *substring;
+    __block NSRange range;
+    
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        NSData *data = [NSData dataWithContentsOfURL:url];//下载html
+        NSString *HTMLStr  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        do {
+            range = [HTMLStr rangeOfString:@"\"item_title\"><a href=\"/t/"];//起点
+            if (range.location == NSNotFound) break;//跳出
+            HTMLStr = [HTMLStr substringFromIndex:NSMaxRange(range)];//截取起点后面的字符串
+            range = [HTMLStr rangeOfString:@"</a>"];//终点
+            substring = [HTMLStr substringToIndex:range.location];//解析结果
+            [arr addObject:substring];
+        } while (1);
+        black(arr);
+    }];
+    
+    //创建非主队列
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:operation]; //[operation start];
+    return operation;
+}
+
 
 //懒加载
 - (AFHTTPSessionManager *)sessionManager {
