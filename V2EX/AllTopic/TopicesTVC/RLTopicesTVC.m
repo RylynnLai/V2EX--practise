@@ -50,26 +50,28 @@
 //    }];
     
     //获取最近的话题HTML文本并解析话题列表
+    __weak typeof(self) weakSelf = self;
     [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:@"/recent?p=1" callBackBlock:^(NSArray *resArr) {
         self.topices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
             _indexDic = indexDic;
         }];
-        [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-        
-    
+        [weakSelf.tableView reloadData];
         for (RLTopic *topic in self.topices) {
             NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
             [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-                
                 int idx = [[_indexDic objectForKey:[[topicMs firstObject] ID]] intValue];
-                [self.topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
+                [weakSelf.topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } failure:^{
             }];
         }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.tableView.mj_header endRefreshing];
+        });
+        
     }];
 }
 - (void)initUI {
@@ -112,6 +114,11 @@
 - (NSMutableArray *)topices {
     if (!_topices) {
         _topices = [NSMutableArray array];
+        [RLTopic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+            return @{
+                     @"ID":@"id",
+                     };
+        }];
     }
     return _topices;
 }
