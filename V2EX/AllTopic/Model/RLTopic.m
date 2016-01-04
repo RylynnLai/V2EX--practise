@@ -17,7 +17,6 @@
 + (NSMutableDictionary *)parserHTMLStrs:(NSArray *)resArr{
     NSRange range;
     NSString *tempStr;
-    NSMutableArray *topices = [NSMutableArray arrayWithCapacity:resArr.count];
     NSMutableDictionary *topicDic = [NSMutableDictionary dictionaryWithCapacity:resArr.count];
     
     for (int i = 0; i < resArr.count; i ++) {
@@ -34,7 +33,6 @@
         tempStr = [str substringFromIndex:range.location];
         range = [tempStr rangeOfString:@"\""];
         topic.replies = [tempStr substringToIndex:range.location];
-        [topices addObject:topic];
         [topicDic setObject:topic forKey:[NSString stringWithFormat:@"%d", i]];//保存话题序列
     }
     return topicDic;

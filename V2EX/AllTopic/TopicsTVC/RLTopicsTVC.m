@@ -16,14 +16,18 @@
 #define tagW screenW * 0.4
 #define tipicesNumOfEachPage 20
 
+typedef NS_ENUM(NSInteger, RLGameState) {
+    RLRecentTopicsPage,
+    RLPopTopicsPage,
+};
+
 @interface RLTopicsTVC ()<UIScrollViewDelegate>
 {
     UIButton *_recentBtn;
     UIButton *_popBtn;
     NSInteger _currentPageIdx;
-    NSDictionary *_indexDic;
 }
-
+/**保存数据模型数组(字典)*/
 @property (nonatomic, strong) NSMutableDictionary *topicDic;
 @end
 
@@ -39,6 +43,7 @@
     footer.refreshingTitleHidden = YES;
     self.tableView.mj_footer = footer;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //第一次加载出现时刷新和显示最近话题页面,只执行一次
@@ -55,55 +60,46 @@
     [self.topicDic removeAllObjects];
     [self loadData];
 }
-//加载更多
+//上拉加载更多
 - (void)loadMore {
     _currentPageIdx ++;
     [self loadData];
 }
 
 - (void)loadData {
-//    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:@"/api/topics/hot.json" success:^(id response) {
-//        _topics = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-//        [self.tableView reloadData];
-//        [self.tableView.mj_header endRefreshing];
-//    } failure:^{
-//    }];
-    
-    __block NSDictionary *tempTopicDic;
     //获取最近的话题HTML文本并解析话题列表
     NSString *path = [NSString stringWithFormat:@"/recent?p=%ld", _currentPageIdx];
     [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:path callBackBlock:^(NSArray *resArr) {
-        if (self.topicDic.count == 0) {
-            self.topicDic = [RLTopic parserHTMLStrs:resArr];
-        } else {
-            tempTopicDic = [RLTopic parserHTMLStrs:resArr];
-            for (NSString *idxKey in tempTopicDic) {//这里快速遍历可以获取到key(并不是获到value)
-                NSInteger index = idxKey.integerValue + tipicesNumOfEachPage * (_currentPageIdx - 1);
-                [self.topicDic setObject:[self.topicDic objectForKey:idxKey] forKey:[NSString stringWithFormat:@"%ld", index]];
-            }
+        NSDictionary *tempTopicDic = [RLTopic parserHTMLStrs:resArr];
+        for (NSString *idxKey in tempTopicDic) {//这里快速遍历可以获取到key(并不是获到value)
+            NSInteger index = idxKey.integerValue + tipicesNumOfEachPage * (_currentPageIdx - 1);
+            [self.topicDic setObject:[tempTopicDic objectForKey:idxKey] forKey:[NSString stringWithFormat:@"%ld", index]];
         }
-        [self.tableView reloadData];
+        [self.tableView reloadData];//到这步可以部分显示话题信息
         
         //在主线程刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
         });
-        
-        for (NSString *idxKey in self.topicDic) {
+        //分别获取每个话题的内容
+        for (NSString *idxKey in tempTopicDic) {
             RLTopic *topic = [self.topicDic objectForKey:idxKey];
             NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
             [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-                [_topicDic setObject:[topicMs firstObject] forKey:idxKey];
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idxKey.intValue inSection:0];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                NSInteger index = idxKey.integerValue + tipicesNumOfEachPage * (_currentPageIdx - 1);
+                [_topicDic setObject:[topicMs firstObject] forKey:[NSString stringWithFormat:@"%ld", index]];
+                //主线程更新UI
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                });
             } failure:^{
             }];
         }
     }];
 }
-
 
 - (void)initUI {
     _recentBtn = [UIButton buttonWithType:UIButtonTypeSystem];
