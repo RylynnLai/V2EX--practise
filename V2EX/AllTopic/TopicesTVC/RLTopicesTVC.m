@@ -56,15 +56,13 @@
         }];
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
-        
     
         for (RLTopic *topic in self.topices) {
             NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
             [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-                
                 int idx = [[_indexDic objectForKey:[[topicMs firstObject] ID]] intValue];
-                [self.topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
+                [_topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } failure:^{
@@ -112,6 +110,11 @@
 - (NSMutableArray *)topices {
     if (!_topices) {
         _topices = [NSMutableArray array];
+        [RLTopic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+            return @{
+                     @"ID":@"id",
+                     };
+        }];
     }
     return _topices;
 }
