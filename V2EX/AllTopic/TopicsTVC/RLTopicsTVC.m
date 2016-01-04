@@ -84,9 +84,9 @@ typedef NS_ENUM(NSInteger, RLGameState) {
         });
         //分别获取每个话题的内容
         for (NSString *idxKey in tempTopicDic) {
-            RLTopic *topic = [self.topicDic objectForKey:idxKey];
-            NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
-            [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
+            RLTopic *topic = [tempTopicDic objectForKey:idxKey];
+            NSString *url = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
+            [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:url success:^(id response) {
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
                 NSInteger index = idxKey.integerValue + tipicesNumOfEachPage * (_currentPageIdx - 1);
                 [_topicDic setObject:[topicMs firstObject] forKey:[NSString stringWithFormat:@"%ld", index]];
