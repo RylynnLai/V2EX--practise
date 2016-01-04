@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
-		1C5001B61C35277800A0D268 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5001B51C35277800A0D268 /* Foundation+Log.m */; };
 		1C680F3C1C3271F2007A2C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1C1C3271F2007A2C19 /* Assets.xcassets */; };
 		1C680F3D1C3271F2007A2C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1D1C3271F2007A2C19 /* LaunchScreen.storyboard */; };
 		1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F221C3271F2007A2C19 /* RLTabbarVC.m */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C5001B51C35277800A0D268 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		1C680F1C1C3271F2007A2C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C680F1E1C3271F2007A2C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 		1C680F331C3271F2007A2C19 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				1C5001B51C35277800A0D268 /* Foundation+Log.m */,
 				1C680F341C3271F2007A2C19 /* NSString+HTMLTool.h */,
 				1C680F351C3271F2007A2C19 /* NSString+HTMLTool.m */,
 				1C680F361C3271F2007A2C19 /* Single.h */,
@@ -349,7 +346,6 @@
 				1C680F5F1C3273A8007A2C19 /* RLTopicDetailVC.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				1C680F5E1C3273A8007A2C19 /* RLTopicesTVC.m in Sources */,
-				1C5001B61C35277800A0D268 /* Foundation+Log.m in Sources */,
 				1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */,
 				1C680F501C32738C007A2C19 /* RLNode.m in Sources */,
 			);
