@@ -18,8 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[RLTopicsTVC alloc] init]];
-    [self addChildViewController:nav];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:[[RLTopicsTVC alloc] init]];
+    nav1.tabBarItem.title = @"话题";
+    [self addChildViewController:nav1];
+    
+    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+    nav2.tabBarItem.title = @"节点";
+    [self addChildViewController:nav2];
     
  }
 

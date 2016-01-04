@@ -51,7 +51,8 @@
         range = [tempStr rangeOfString:@"\""];
         topic.replies = [tempStr substringToIndex:range.location];
         [topices addObject:topic];
-        [indexDic setValue:[NSNumber numberWithInt:i] forKey:topic.ID];
+//        [indexDic setValue:[NSNumber numberWithInt:i] forKey:topic.ID];//保存话题序列
+        [indexDic setValue:topic forKey:[NSString stringWithFormat:@"%d", i]];//保存话题序列
     }
     block(indexDic);
     return topices;

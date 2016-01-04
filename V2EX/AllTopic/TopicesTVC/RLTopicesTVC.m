@@ -14,12 +14,13 @@
 #import "NSString+HTMLTool.h"
 
 #define tagW screenW * 0.4
+#define tipicesNumOfEachPage 20
 
 @interface RLTopicsTVC ()<UIScrollViewDelegate>
 {
     UIButton *_recentBtn;
     UIButton *_popBtn;
-    NSInteger _currentPage;
+    NSInteger _currentPageIdx;
     NSDictionary *_indexDic;
 }
 
@@ -32,13 +33,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
+    _currentPageIdx = 1;//初始化页面索引
+    
     //MJRefresh
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.tableView.mj_header beginRefreshing];
+    //第一次加载出现时刷新和显示最近话题页面,只执行一次
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.tableView.mj_header beginRefreshing];
+        [self tagClick:_recentBtn];
+    });
 }
 
 - (void)loadData {
@@ -48,16 +56,31 @@
 //        [self.tableView.mj_header endRefreshing];
 //    } failure:^{
 //    }];
-    
+    __block NSArray *tempTopices;
     //获取最近的话题HTML文本并解析话题列表
-    __weak typeof(self) weakSelf = self;
-    [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:@"/recent?p=1" callBackBlock:^(NSArray *resArr) {
-        self.topices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
-            _indexDic = indexDic;
-        }];
+    NSString *path = [NSString stringWithFormat:@"/recent?p=%ld", _currentPageIdx];
+    [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:path callBackBlock:^(NSArray *resArr) {
+        if (self.topices.count == 0) {
+            self.topices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
+                _indexDic = indexDic;
+            }];
+        } else {
+            tempTopices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
+                for (NSString *key in indexDic) {//这里快速遍历可以获取到key(并不是获到value)
+                    NSInteger index = [[indexDic objectForKey:key] longValue] + tipicesNumOfEachPage * (_currentPageIdx - 1);
+                    [_indexDic setValue:[NSNumber numberWithLong:index] forKey:key];
+                }
+            }];
+            self.topices = (NSMutableArray *)[self.topices arrayByAddingObjectsFromArray:tempTopices];
+        }
         [self.tableView reloadData];
-        [self.tableView.mj_header endRefreshing];
-    
+        NSLog(@"%@", _indexDic);
+        //在主线程刷新UI
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
+        });
+        
         for (RLTopic *topic in self.topices) {
             NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
             [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
@@ -65,17 +88,18 @@
                 int idx = [[_indexDic objectForKey:[[topicMs firstObject] ID]] intValue];
                 [_topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-                [weakSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } failure:^{
             }];
         }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakSelf.tableView.mj_header endRefreshing];
-        });
-        
     }];
 }
+//加载更多
+- (void)loadMore {
+    _currentPageIdx ++;
+    [self loadData];
+}
+
 - (void)initUI {
     _recentBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     _recentBtn.frame = CGRectMake(0, 0, tagW * 0.5, 30);
@@ -99,6 +123,10 @@
     [tagView addSubview:_popBtn];
     
     self.navigationItem.titleView = tagView;
+}
+
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 
 - (void)tagClick:(UIButton *)btn {
@@ -143,6 +171,7 @@
     }
     return cell;
 }
+
 #pragma mark ------------------------------------------------------------
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

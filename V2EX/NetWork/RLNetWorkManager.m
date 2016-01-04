@@ -30,10 +30,12 @@ SingleM(RLNetWorkManager)
         block(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         RLLog(@"%@", error);
+        RLLog(@"%@", [error class]);
     }];
     return task;
 }
 
+//发送请求获取HTML文本
 - (NSOperation *)requestHTMLWithPath:(NSString *)path callBackBlock:(callBackBlock)black{
     NSString *URLStr = [mainURL stringByAppendingString:path];
     NSURL *url = [NSURL URLWithString:URLStr];
