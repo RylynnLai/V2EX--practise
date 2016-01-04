@@ -29,8 +29,7 @@ SingleM(RLNetWorkManager)
         RLLog(@"获取网络数据");
         block(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        RLLog(@"%@", error);
-        RLLog(@"%@", [error class]);
+        RLLog(@"%@", error.userInfo);
     }];
     return task;
 }

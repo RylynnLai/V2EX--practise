@@ -47,8 +47,6 @@
 
 @class RLMember, RLNode, RLTopic;
 
-typedef void(^callBack) (NSMutableDictionary *indexDic);
-
 @interface RLTopic : NSObject
 
 @property (nonatomic, strong) NSString *ID;
@@ -73,5 +71,5 @@ typedef void(^callBack) (NSMutableDictionary *indexDic);
 
 @property (nonatomic, strong) NSString *last_touched;
 
-+ (NSMutableArray *)parserHTMLStrs:(NSArray *)resArr callBack:(callBack)block;
++ (NSMutableDictionary *)parserHTMLStrs:(NSArray *)resArr;
 @end

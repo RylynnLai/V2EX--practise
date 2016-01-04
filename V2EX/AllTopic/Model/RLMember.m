@@ -9,5 +9,7 @@
 #import "RLMember.h"
 
 @implementation RLMember
-
++ (NSDictionary *)replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
 @end

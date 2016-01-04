@@ -24,7 +24,6 @@
     NSDictionary *_indexDic;
 }
 
-@property (nonatomic, strong) NSMutableArray *topices;
 @property (nonatomic, strong) NSMutableDictionary *topicDic;
 @end
 
@@ -33,11 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    _currentPageIdx = 1;//初始化页面索引
     
     //MJRefresh
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    footer.refreshingTitleHidden = YES;
+    self.tableView.mj_footer = footer;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -49,6 +49,18 @@
     });
 }
 
+//下拉刷新
+- (void)refreshData {
+    _currentPageIdx = 1;
+    [self.topicDic removeAllObjects];
+    [self loadData];
+}
+//加载更多
+- (void)loadMore {
+    _currentPageIdx ++;
+    [self loadData];
+}
+
 - (void)loadData {
 //    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:@"/api/topics/hot.json" success:^(id response) {
 //        _topices = [RLTopic mj_objectArrayWithKeyValuesArray:response];
@@ -56,49 +68,42 @@
 //        [self.tableView.mj_header endRefreshing];
 //    } failure:^{
 //    }];
-    __block NSArray *tempTopices;
+    
+    __block NSDictionary *tempTopicDic;
     //获取最近的话题HTML文本并解析话题列表
     NSString *path = [NSString stringWithFormat:@"/recent?p=%ld", _currentPageIdx];
     [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:path callBackBlock:^(NSArray *resArr) {
-        if (self.topices.count == 0) {
-            self.topices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
-                _indexDic = indexDic;
-            }];
+        if (self.topicDic.count == 0) {
+            self.topicDic = [RLTopic parserHTMLStrs:resArr];
         } else {
-            tempTopices = [RLTopic parserHTMLStrs:resArr callBack:^(NSMutableDictionary *indexDic) {
-                for (NSString *key in indexDic) {//这里快速遍历可以获取到key(并不是获到value)
-                    NSInteger index = [[indexDic objectForKey:key] longValue] + tipicesNumOfEachPage * (_currentPageIdx - 1);
-                    [_indexDic setValue:[NSNumber numberWithLong:index] forKey:key];
-                }
-            }];
-            self.topices = (NSMutableArray *)[self.topices arrayByAddingObjectsFromArray:tempTopices];
+            tempTopicDic = [RLTopic parserHTMLStrs:resArr];
+            for (NSString *idxKey in tempTopicDic) {//这里快速遍历可以获取到key(并不是获到value)
+                NSInteger index = idxKey.integerValue + tipicesNumOfEachPage * (_currentPageIdx - 1);
+                [self.topicDic setObject:[self.topicDic objectForKey:idxKey] forKey:[NSString stringWithFormat:@"%ld", index]];
+            }
         }
         [self.tableView reloadData];
-        NSLog(@"%@", _indexDic);
+        
         //在主线程刷新UI
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
         });
         
-        for (RLTopic *topic in self.topices) {
+        for (NSString *idxKey in self.topicDic) {
+            RLTopic *topic = [self.topicDic objectForKey:idxKey];
             NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%d", [topic.ID intValue]];
             [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-                int idx = [[_indexDic objectForKey:[[topicMs firstObject] ID]] intValue];
-                [_topices replaceObjectAtIndex:idx withObject:[topicMs firstObject]];
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+                [_topicDic setObject:[topicMs firstObject] forKey:idxKey];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idxKey.intValue inSection:0];
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             } failure:^{
             }];
         }
     }];
 }
-//加载更多
-- (void)loadMore {
-    _currentPageIdx ++;
-    [self loadData];
-}
+
 
 - (void)initUI {
     _recentBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -141,23 +146,18 @@
 
 #pragma mark ------------------------------------------------------------
 #pragma mark 懒加载
-- (NSMutableArray *)topices {
-    if (!_topices) {
-        _topices = [NSMutableArray array];
-        [RLTopic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-            return @{
-                     @"ID":@"id",
-                     };
-        }];
+- (NSMutableDictionary *)topicDic {
+    if (!_topicDic) {
+        _topicDic = [NSMutableDictionary dictionary];
     }
-    return _topices;
+    return _topicDic;
 }
 
 #pragma mark ------------------------------------------------------------
 #pragma mark Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.topices.count;
+    return self.topicDic.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -166,8 +166,8 @@
     if (!cell) {
         cell = [RLTopicCell topicCell];
     }
-    if (_topices) {
-        cell.topicModel = _topices[indexPath.row];
+    if (_topicDic) {
+        cell.topicModel = [_topicDic objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
     }
     return cell;
 }
@@ -175,7 +175,7 @@
 #pragma mark ------------------------------------------------------------
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RLTopic *topic = self.topices[indexPath.row];
+    RLTopic *topic = [self.topicDic objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
     if ([topic.content_rendered isEqualToString:@""]) {
         return 105;
     }else {
@@ -184,9 +184,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_topices) {
+    if (_topicDic) {
         RLTopicDetailVC *topicDetallVC = [[RLTopicDetailVC alloc] initWithNibName:@"RLTopicDetailVC" bundle:nil];
-        topicDetallVC.topicModel = _topices[indexPath.row];
+        topicDetallVC.topicModel =  [self.topicDic objectForKey:[NSString stringWithFormat:@"%ld", indexPath.row]];
         
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:topicDetallVC animated:YES];

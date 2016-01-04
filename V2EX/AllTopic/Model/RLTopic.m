@@ -10,31 +10,15 @@
 
 @implementation RLTopic
 
-- (void)setMember:(RLMember *)member {
-    //替换模型中的属性(注意key-value的对应关系,不要写反)
-    [RLMember mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{
-                 @"ID":@"id",
-                 };
-    }];
-    _member = [RLMember mj_objectWithKeyValues:member];
++ (NSDictionary *)replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
 }
-
-- (void)setNode:(RLNode *)node {
-    //替换模型中的属性(注意key-value的对应关系,不要写反)
-    [RLNode mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{
-                 @"ID":@"id",
-                 };
-    }];
-    _node = [RLNode mj_objectWithKeyValues:node];
-}
-
-+ (NSMutableArray *)parserHTMLStrs:(NSArray *)resArr callBack:(callBack)block{
+//解析HTML,获取标题等简单数据
++ (NSMutableDictionary *)parserHTMLStrs:(NSArray *)resArr{
     NSRange range;
     NSString *tempStr;
     NSMutableArray *topices = [NSMutableArray arrayWithCapacity:resArr.count];
-    NSMutableDictionary *indexDic = [NSMutableDictionary dictionaryWithCapacity:resArr.count];
+    NSMutableDictionary *topicDic = [NSMutableDictionary dictionaryWithCapacity:resArr.count];
     
     for (int i = 0; i < resArr.count; i ++) {
         NSString *str = resArr[i];
@@ -51,11 +35,9 @@
         range = [tempStr rangeOfString:@"\""];
         topic.replies = [tempStr substringToIndex:range.location];
         [topices addObject:topic];
-//        [indexDic setValue:[NSNumber numberWithInt:i] forKey:topic.ID];//保存话题序列
-        [indexDic setValue:topic forKey:[NSString stringWithFormat:@"%d", i]];//保存话题序列
+        [topicDic setObject:topic forKey:[NSString stringWithFormat:@"%d", i]];//保存话题序列
     }
-    block(indexDic);
-    return topices;
+    return topicDic;
 }
 
 

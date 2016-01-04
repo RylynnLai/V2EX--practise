@@ -9,5 +9,7 @@
 #import "RLNode.h"
 
 @implementation RLNode
-
++ (NSDictionary *)replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
 @end
