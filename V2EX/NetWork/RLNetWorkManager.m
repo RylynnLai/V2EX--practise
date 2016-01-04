@@ -24,14 +24,28 @@ SingleM(RLNetWorkManager)
 //根据url发送网络请求,block返回
 - (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
     NSString *URLStr = [mainURL stringByAppendingString:path];
+    NSString *cahchesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];//获取沙盒路径
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *plistPath = [cahchesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/topices/%@.plist", path]];
     
-    NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        RLLog(@"获取网络数据");
+    if([fileManager fileExistsAtPath:plistPath]) {
+        NSLog(@"++++++++");
+        NSDictionary *responseObject = [NSDictionary dictionaryWithContentsOfFile:plistPath];
         block(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        RLLog(@"%@", error.userInfo);
-    }];
-    return task;
+        return nil;
+    } else {
+        NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            NSLog(@"%@", responseObject);
+            BOOL b = [(NSDictionary *)responseObject writeToFile:plistPath atomically:YES];
+            block(responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"]
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:nil];//NSData转字典
+            RLLog(@"%@", [dic objectForKey:@"message"]);
+        }];
+        return task;
+    }
 }
 
 //发送请求获取HTML文本

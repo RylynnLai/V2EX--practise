@@ -18,13 +18,13 @@
 		1C680F4F1C32738C007A2C19 /* RLMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F4A1C32738C007A2C19 /* RLMember.m */; };
 		1C680F501C32738C007A2C19 /* RLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F4C1C32738C007A2C19 /* RLNode.m */; };
 		1C680F511C32738C007A2C19 /* RLTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F4E1C32738C007A2C19 /* RLTopic.m */; };
-		1C680F5C1C3273A8007A2C19 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F541C3273A8007A2C19 /* RLTopicCell.m */; };
-		1C680F5D1C3273A8007A2C19 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F551C3273A8007A2C19 /* RLTopicCell.xib */; };
-		1C680F5E1C3273A8007A2C19 /* RLTopicesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F571C3273A8007A2C19 /* RLTopicesTVC.m */; };
-		1C680F5F1C3273A8007A2C19 /* RLTopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F5A1C3273A8007A2C19 /* RLTopicDetailVC.m */; };
-		1C680F601C3273A8007A2C19 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F5B1C3273A8007A2C19 /* RLTopicDetailVC.xib */; };
 		1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F621C327D34007A2C19 /* NSString+Extension.m */; };
 		1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */; };
+		1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */; };
+		1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */; };
+		1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */; };
+		1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */; };
+		1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,17 +49,17 @@
 		1C680F4C1C32738C007A2C19 /* RLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNode.m; sourceTree = "<group>"; };
 		1C680F4D1C32738C007A2C19 /* RLTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopic.h; sourceTree = "<group>"; };
 		1C680F4E1C32738C007A2C19 /* RLTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopic.m; sourceTree = "<group>"; };
-		1C680F531C3273A8007A2C19 /* RLTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicCell.h; sourceTree = "<group>"; };
-		1C680F541C3273A8007A2C19 /* RLTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicCell.m; sourceTree = "<group>"; };
-		1C680F551C3273A8007A2C19 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
-		1C680F561C3273A8007A2C19 /* RLTopicesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicesTVC.h; sourceTree = "<group>"; };
-		1C680F571C3273A8007A2C19 /* RLTopicesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicesTVC.m; sourceTree = "<group>"; };
-		1C680F591C3273A8007A2C19 /* RLTopicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicDetailVC.h; sourceTree = "<group>"; };
-		1C680F5A1C3273A8007A2C19 /* RLTopicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicDetailVC.m; sourceTree = "<group>"; };
-		1C680F5B1C3273A8007A2C19 /* RLTopicDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicDetailVC.xib; sourceTree = "<group>"; };
 		1C680F611C327D34007A2C19 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		1C680F621C327D34007A2C19 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicCell.h; sourceTree = "<group>"; };
+		1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicCell.m; sourceTree = "<group>"; };
+		1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
+		1C97A2841C3A6FD700B954C2 /* RLTopicsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTVC.h; sourceTree = "<group>"; };
+		1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicsTVC.m; sourceTree = "<group>"; };
+		1C97A2871C3A6FD700B954C2 /* RLTopicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicDetailVC.h; sourceTree = "<group>"; };
+		1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicDetailVC.m; sourceTree = "<group>"; };
+		1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicDetailVC.xib; sourceTree = "<group>"; };
 		1CF13A031C1EB27E00674513 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		920F8A219D83A1242B0A01BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +96,7 @@
 		1C680F111C3271F2007A2C19 /* AllTopic */ = {
 			isa = PBXGroup;
 			children = (
-				1C680F521C3273A8007A2C19 /* TopicesTVC */,
+				1C97A2801C3A6FD700B954C2 /* TopicsTVC */,
 				1C680F481C32738C007A2C19 /* Model */,
 			);
 			path = AllTopic;
@@ -157,25 +157,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1C680F521C3273A8007A2C19 /* TopicesTVC */ = {
+		1C97A2801C3A6FD700B954C2 /* TopicsTVC */ = {
 			isa = PBXGroup;
 			children = (
-				1C680F531C3273A8007A2C19 /* RLTopicCell.h */,
-				1C680F541C3273A8007A2C19 /* RLTopicCell.m */,
-				1C680F551C3273A8007A2C19 /* RLTopicCell.xib */,
-				1C680F561C3273A8007A2C19 /* RLTopicesTVC.h */,
-				1C680F571C3273A8007A2C19 /* RLTopicesTVC.m */,
-				1C680F581C3273A8007A2C19 /* topicDetail */,
+				1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */,
+				1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */,
+				1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */,
+				1C97A2841C3A6FD700B954C2 /* RLTopicsTVC.h */,
+				1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */,
+				1C97A2861C3A6FD700B954C2 /* topicDetail */,
 			);
-			path = TopicesTVC;
+			path = TopicsTVC;
 			sourceTree = "<group>";
 		};
-		1C680F581C3273A8007A2C19 /* topicDetail */ = {
+		1C97A2861C3A6FD700B954C2 /* topicDetail */ = {
 			isa = PBXGroup;
 			children = (
-				1C680F591C3273A8007A2C19 /* RLTopicDetailVC.h */,
-				1C680F5A1C3273A8007A2C19 /* RLTopicDetailVC.m */,
-				1C680F5B1C3273A8007A2C19 /* RLTopicDetailVC.xib */,
+				1C97A2871C3A6FD700B954C2 /* RLTopicDetailVC.h */,
+				1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */,
+				1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */,
 			);
 			path = topicDetail;
 			sourceTree = "<group>";
@@ -278,8 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C680F3D1C3271F2007A2C19 /* LaunchScreen.storyboard in Resources */,
-				1C680F601C3273A8007A2C19 /* RLTopicDetailVC.xib in Resources */,
-				1C680F5D1C3273A8007A2C19 /* RLTopicCell.xib in Resources */,
+				1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */,
+				1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */,
 				1C680F3C1C3271F2007A2C19 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,17 +339,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C680F5C1C3273A8007A2C19 /* RLTopicCell.m in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
+				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
 				1C680F4F1C32738C007A2C19 /* RLMember.m in Sources */,
 				1C680F511C32738C007A2C19 /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
-				1C680F5F1C3273A8007A2C19 /* RLTopicDetailVC.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
-				1C680F5E1C3273A8007A2C19 /* RLTopicesTVC.m in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
+				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
+				1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */,
 				1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */,
 				1C680F501C32738C007A2C19 /* RLNode.m in Sources */,
 			);

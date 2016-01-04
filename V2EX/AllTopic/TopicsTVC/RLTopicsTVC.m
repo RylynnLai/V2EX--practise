@@ -6,7 +6,7 @@
 //  Copyright © 2015年 ucs. All rights reserved.
 //
 
-#import "RLTopicesTVC.h"
+#import "RLTopicsTVC.h"
 #import "RLTopic.h"
 #import "RLTopicCell.h"
 #import "RLTopicDetailVC.h"
@@ -63,7 +63,7 @@
 
 - (void)loadData {
 //    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:@"/api/topics/hot.json" success:^(id response) {
-//        _topices = [RLTopic mj_objectArrayWithKeyValuesArray:response];
+//        _topics = [RLTopic mj_objectArrayWithKeyValuesArray:response];
 //        [self.tableView reloadData];
 //        [self.tableView.mj_header endRefreshing];
 //    } failure:^{
@@ -97,7 +97,7 @@
                 NSArray *topicMs = [RLTopic mj_objectArrayWithKeyValuesArray:response];
                 [_topicDic setObject:[topicMs firstObject] forKey:idxKey];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idxKey.intValue inSection:0];
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             } failure:^{
             }];
         }
