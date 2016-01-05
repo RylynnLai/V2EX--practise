@@ -21,34 +21,39 @@ static NSString *mainURL = @"https://www.v2ex.com";
 //单例
 SingleM(RLNetWorkManager)
 
-//根据url发送网络请求,block返回
-- (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
+//请求话题数据,block返回(以plist文件缓存话题模型)
+- (NSURLSessionDataTask *)requestTopicsWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
     //截取plist文件名(id=xxxxx)
     NSRange range = [path rangeOfString:@"?"];
-    NSString *plistName = [path substringFromIndex:range.location + 1];
+    NSString *plistName = @"0000";//初始化
+    //存在则表明是单独获取一个话题数据,否则是获取最热话题数组(不缓存)
+    if (range.location != NSNotFound) plistName = [path substringFromIndex:range.location + 1];
     //获取沙盒路径
     NSString *cahchesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     //plist全路径
     NSString *plistPath = [cahchesPath stringByAppendingPathComponent:[NSString stringWithFormat:@"/topics/%@.plist", plistName]];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if([fileManager fileExistsAtPath:plistPath]) {//存在缓存文件
+    if([fileManager fileExistsAtPath:plistPath]) {//存在缓存文件(只有请求单个话题才有可能进去)
         NSArray *responseObject = [NSArray arrayWithContentsOfFile:plistPath];
         block(responseObject);
         return nil;
-    } else {//没有缓存
-        NSString *URLStr = [mainURL stringByAppendingString:path];
-        NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            [responseObject writeToFile:plistPath atomically:YES];//写缓存
-            block(responseObject);
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"]
-                                                                options:NSJSONReadingMutableContainers
-                                                                  error:nil];//NSData转字典
-            RLLog(@"%@", [dic objectForKey:@"message"]);
-        }];
-        return task;
     }
+    //没有缓存
+    NSString *URLStr = [mainURL stringByAppendingString:path];
+    NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        if (![plistName isEqualToString:@"0000"]) {
+            [responseObject writeToFile:plistPath atomically:YES];//写缓存,如果是获取最新话题列表不用写缓存
+        }
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"]
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];//NSData转字典
+        RLLog(@"请求话题失败%@", [dic objectForKey:@"message"]);
+    }];
+    return task;
+    
 }
 
 //发送请求获取HTML文本

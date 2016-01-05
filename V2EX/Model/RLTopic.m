@@ -38,5 +38,13 @@
     return topicDic;
 }
 
++ (NSMutableDictionary *)parserResponse:(id)response {
+    NSArray *topics = [RLTopic mj_objectArrayWithKeyValuesArray:response];
+    NSMutableDictionary *topicDic = [NSMutableDictionary dictionaryWithCapacity:topics.count];
+    for (int i = 0; i < topics.count; i ++) {
+        [topicDic setObject:topics[i] forKey:[NSString stringWithFormat:@"%d", i]];//保存话题序列
+    }
+    return topicDic;
+}
 
 @end

@@ -72,4 +72,6 @@
 @property (nonatomic, strong) NSString *last_touched;
 
 + (NSMutableDictionary *)parserHTMLStrs:(NSArray *)resArr;
+
++ (NSMutableDictionary *)parserResponse:(id)response;
 @end

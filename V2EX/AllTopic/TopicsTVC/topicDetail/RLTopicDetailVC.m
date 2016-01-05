@@ -33,6 +33,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
 //    self.navigationController.navigationBar.mj_y = 20;
 }
 
@@ -42,21 +43,26 @@
     [self.view addSubview:self.contentWbV];
 }
 - (void)initData {
-    //文章内容
-    NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
-    [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
-    //头像
-    NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_large]];
-    [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
-    //标题
-    _titleLable.text = _topicModel.title;
-    //作者名称
-    _authorLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.member.username];
-    //创建时间
-    NSString *TimeStr = [NSString creatTimeByTimeIntervalSince1970:[_topicModel.created intValue]];
-    _createdTimeLable.text = [NSString stringWithFormat:@"%@ ●", TimeStr];
-    //回复个数
-    _replieNumLable.text = [NSString stringWithFormat:@"%d个回复", [_topicModel.replies intValue]];
+    if (_topicModel) {
+        //导航栏标题
+        self.title = _topicModel.title;
+        //文章内容
+        NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
+        [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
+        //头像
+        NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_large]];
+        [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
+        //标题
+        _titleLable.text = _topicModel.title;
+        _titleLable.adjustsFontSizeToFitWidth = YES;//固定lable大小,内容自适应,还有个固定字体大小,lable自适应的方法sizeToFit
+        //作者名称
+        _authorLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.member.username];
+        //创建时间
+        NSString *TimeStr = [NSString creatTimeByTimeIntervalSince1970:[_topicModel.created intValue]];
+        _createdTimeLable.text = [NSString stringWithFormat:@"%@ ●", TimeStr];
+        //回复个数
+        _replieNumLable.text = [NSString stringWithFormat:@"%d个回复", [_topicModel.replies intValue]];
+    }
 }
 
 #pragma mark ------------------------------------------------------------
