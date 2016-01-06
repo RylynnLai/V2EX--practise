@@ -17,6 +17,8 @@ typedef void(^callBackBlock) (NSArray *resArr);
 
 SingleH(RLNetWorkManager)
 
+- (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock;
+
 /**请求话题数据*/
 - (NSURLSessionDataTask *)requestTopicsWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock;
 /**请求HTML文本,返回标题字符串*/

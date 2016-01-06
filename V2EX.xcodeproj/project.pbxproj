@@ -468,6 +468,7 @@
 			baseConfigurationReference = 7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = V2EX/other/PrefixHeader.pch;
 				INFOPLIST_FILE = V2EX/Info.plist;
@@ -483,6 +484,7 @@
 			baseConfigurationReference = EB0F29BE591A3865F293C4B1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = V2EX/other/PrefixHeader.pch;
 				INFOPLIST_FILE = V2EX/Info.plist;

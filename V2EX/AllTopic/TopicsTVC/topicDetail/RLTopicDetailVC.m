@@ -47,10 +47,21 @@
         //导航栏标题
         self.title = _topicModel.title;
         //文章内容
-        NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
-        [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
+        if (_topicModel.content_rendered.length > 0) {
+            NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
+            [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
+        } else {
+            NSString *path = [NSString stringWithFormat:@"/api/topics/show.json?id=%@", _topicModel.ID];
+            [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
+                NSArray *topics = [RLTopic mj_objectArrayWithKeyValuesArray:response];
+                _topicModel = [topics firstObject];
+                NSString *htmlStr = [NSString HTMLstringWithBody:_topicModel.content_rendered];
+                [self.contentWbV loadHTMLString:htmlStr baseURL:nil];
+            } failure:^{
+            }];
+        }
         //头像
-        NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_large]];
+        NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_normal]];
         [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
         //标题
         _titleLable.text = _topicModel.title;
@@ -58,8 +69,8 @@
         //作者名称
         _authorLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.member.username];
         //创建时间
-        NSString *TimeStr = [NSString creatTimeByTimeIntervalSince1970:[_topicModel.created intValue]];
-        _createdTimeLable.text = [NSString stringWithFormat:@"%@ ●", TimeStr];
+//        NSString *TimeStr = [NSString creatTimeByTimeIntervalSince1970:[_topicModel.created intValue]];
+        _createdTimeLable.text = [NSString stringWithFormat:@"%@ ●", _topicModel.createdTime];
         //回复个数
         _replieNumLable.text = [NSString stringWithFormat:@"%d个回复", [_topicModel.replies intValue]];
     }

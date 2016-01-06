@@ -67,11 +67,13 @@
 
 @property (nonatomic, strong) NSString *created;
 
+@property (nonatomic, strong) NSString *createdTime;
+
 @property (nonatomic, strong) NSString *last_modified;
 
 @property (nonatomic, strong) NSString *last_touched;
 
-+ (NSMutableDictionary *)parserHTMLStrs:(NSArray *)resArr;
+/**解析HTML文本*/
++ (NSMutableArray *)parserHTMLStrs:(NSArray *)resArr;
 
-+ (NSMutableDictionary *)parserResponse:(id)response;
 @end

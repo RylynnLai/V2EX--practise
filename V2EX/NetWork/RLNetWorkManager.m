@@ -21,6 +21,22 @@ static NSString *mainURL = @"https://www.v2ex.com";
 //单例
 SingleM(RLNetWorkManager)
 
+//根据url请求
+- (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock {
+    NSString *URLStr = [mainURL stringByAppendingString:path];
+    NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"]
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];//NSData转字典
+        RLLog(@"请求话题失败%@", [dic objectForKey:@"message"]);
+    }];
+    
+    return task;
+}
+
+
 //请求话题数据,block返回(以plist文件缓存话题模型)
 - (NSURLSessionDataTask *)requestTopicsWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock{
     //截取plist文件名(id=xxxxx)
@@ -69,10 +85,10 @@ SingleM(RLNetWorkManager)
         NSData *data = [NSData dataWithContentsOfURL:url];//下载html
         NSString *HTMLStr  =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         do {//解析
-            range = [HTMLStr rangeOfString:@"\"item_title\"><a href=\"/t/"];//起点
+            range = [HTMLStr rangeOfString:@"<td width=\"48\" valign=\"top\" align=\"center\">"];//起点
             if (range.location == NSNotFound) break;//跳出
             HTMLStr = [HTMLStr substringFromIndex:NSMaxRange(range)];//截取起点后面的字符串
-            range = [HTMLStr rangeOfString:@"</a>"];//终点
+            range = [HTMLStr rangeOfString:@"</tr>"];//终点
             substring = [HTMLStr substringToIndex:range.location];//解析结果
             [arr addObject:substring];
         } while (1);

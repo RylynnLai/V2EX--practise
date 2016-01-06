@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nodeLable;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UILabel *contentLable;
+@property (weak, nonatomic) IBOutlet UILabel *createdTime;
 @property (weak, nonatomic) IBOutlet UIButton *authorBtn;
 @property (weak, nonatomic) IBOutlet UILabel *replieNumLable;
 
@@ -32,12 +33,13 @@
     _replieNumLable.layer.masksToBounds = YES;
 }
 
-
-
 - (void)setTopicModel:(RLTopic *)topicModel {
     _topicModel = topicModel;
     _titleLable.text = _topicModel.title;
+    //下面两项,如果没数据就是空白
     _contentLable.text = _topicModel.content;
+    _createdTime.text = _topicModel.createdTime;
+    //-------------------------------------------
     NSURL *iconURL = [NSURL URLWithString:[NSString stringWithFormat:@"https:%@", _topicModel.member.avatar_normal]];
     [_authorBtn sd_setImageWithURL:iconURL forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"blank"]];
     _nodeLable.text = topicModel.node.name;
