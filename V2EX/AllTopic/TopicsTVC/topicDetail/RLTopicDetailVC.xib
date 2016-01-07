@@ -10,6 +10,7 @@
                 <outlet property="authorBtn" destination="ErG-jx-a5A" id="fPg-VU-vrD"/>
                 <outlet property="authorLable" destination="0sp-eI-W9V" id="3IY-Dm-9OI"/>
                 <outlet property="createdTimeLable" destination="noR-95-hj3" id="g9t-wn-36Q"/>
+                <outlet property="loadingAIV" destination="VfA-UB-DEc" id="cVP-3a-a2r"/>
                 <outlet property="replieNumLable" destination="xZZ-WD-We0" id="Kh7-mS-Jkg"/>
                 <outlet property="titleLable" destination="SJo-ai-clX" id="3si-zC-juK"/>
                 <outlet property="view" destination="CdO-lR-49e" id="GP3-nK-n0p"/>
@@ -99,6 +100,9 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VfA-UB-DEc">
+                            <rect key="frame" x="177" y="324" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
@@ -167,7 +171,7 @@
             <connections>
                 <outlet property="delegate" destination="-1" id="GWI-eR-qQh"/>
             </connections>
-            <point key="canvasLocation" x="312.5" y="-485.5"/>
+            <point key="canvasLocation" x="-25.5" y="-464.5"/>
         </scrollView>
     </objects>
 </document>

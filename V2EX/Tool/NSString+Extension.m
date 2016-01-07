@@ -26,11 +26,11 @@
 
     NSString *timeStr = [[NSString alloc] init];
     if (sec > 0 && sec < 60 * 60) {//1分钟~60分钟
-        timeStr = [NSString stringWithFormat:@"约%d分钟前发布", ((int)sec + 30) / 60];
+        timeStr = [NSString stringWithFormat:@"约%d分钟前发布 ●", ((int)sec + 30) / 60];
     } else if (sec >= 60 * 60 && sec < 60 * 60 * 24) {//1小时~24小时
-        timeStr = [NSString stringWithFormat:@"约%d小时前发布", ((int)(sec / 60) + 30) / 60];
+        timeStr = [NSString stringWithFormat:@"约%d小时前发布 ●", ((int)(sec / 60) + 30) / 60];
     } else if (sec >= 60 * 60 * 24) {//天
-        timeStr = [NSString stringWithFormat:@"约%d天前发布", ((int)((sec / 60) / 60) + 12) / 24];
+        timeStr = [NSString stringWithFormat:@"约%d天前发布 ●", ((int)((sec / 60) / 60) + 12) / 24];
     }
     return timeStr;
 }

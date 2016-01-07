@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
+		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
+		1C58CBB01C3E47D80077B701 /* RLBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAF1C3E47D80077B701 /* RLBubblesView.m */; };
 		1C6343D41C3B6EB9000301FA /* RLNodesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343D31C3B6EB9000301FA /* RLNodesVC.m */; };
 		1C6343DC1C3B717B000301FA /* RLMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343D71C3B717B000301FA /* RLMember.m */; };
 		1C6343DD1C3B717B000301FA /* RLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343D91C3B717B000301FA /* RLNode.m */; };
@@ -29,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
+		1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicsTool.m; sourceTree = "<group>"; };
+		1C58CBAE1C3E47D80077B701 /* RLBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLBubblesView.h; sourceTree = "<group>"; };
+		1C58CBAF1C3E47D80077B701 /* RLBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLBubblesView.m; sourceTree = "<group>"; };
 		1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		1C6343D21C3B6EB9000301FA /* RLNodesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodesVC.h; sourceTree = "<group>"; };
 		1C6343D31C3B6EB9000301FA /* RLNodesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodesVC.m; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 			children = (
 				1C6343D21C3B6EB9000301FA /* RLNodesVC.h */,
 				1C6343D31C3B6EB9000301FA /* RLNodesVC.m */,
+				1C58CBAE1C3E47D80077B701 /* RLBubblesView.h */,
+				1C58CBAF1C3E47D80077B701 /* RLBubblesView.m */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -99,6 +107,8 @@
 				1C6343D91C3B717B000301FA /* RLNode.m */,
 				1C6343DA1C3B717B000301FA /* RLTopic.h */,
 				1C6343DB1C3B717B000301FA /* RLTopic.m */,
+				1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */,
+				1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,11 +364,13 @@
 			files = (
 				1C6343D41C3B6EB9000301FA /* RLNodesVC.m in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
+				1C58CBB01C3E47D80077B701 /* RLBubblesView.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
 				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
 				1C6343DE1C3B717B000301FA /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
+				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "RLNodesVC.h"
+#import "RLBubblesView.h"
 
 @interface RLNodesVC ()
 @property (nonatomic, strong) UIScrollView *nodesScrollView;
@@ -17,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    RLBubblesView *BV = [[RLBubblesView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    BV.nodeModels = @[@1, @2, @3, @4, @5, @6, @7];
+    [self.view addSubview:BV];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,5 +11,5 @@
 @interface NSString (extension)
 /**格式化输出时间字符串*/
 + (NSString *)formatStringByTimeIntervalSince1970:(NSTimeInterval)timeInterval;
-+ (NSString *)creatTimeByTimeIntervalSince1970:(NSTimeInterval)timeInterval ;
++ (NSString *)creatTimeByTimeIntervalSince1970:(NSTimeInterval)timeInterval;
 @end
