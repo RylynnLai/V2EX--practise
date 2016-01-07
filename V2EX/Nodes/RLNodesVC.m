@@ -8,6 +8,9 @@
 
 #import "RLNodesVC.h"
 #import "RLBubblesView.h"
+#import "RLNode.h"
+
+#import "MJExtension.h"
 
 @interface RLNodesVC ()
 @property (nonatomic, strong) UIScrollView *nodesScrollView;
@@ -19,8 +22,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     RLBubblesView *BV = [[RLBubblesView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    BV.nodeModels = @[@1, @2, @3, @4, @5, @6, @7];
+    BV.nodeModels = @[@1];
     [self.view addSubview:BV];
+    
+//    __block NSArray *arr = [NSArray array];
+//    
+//    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:@"/api/nodes/all.json" success:^(id response) {
+//        int i = 0;
+//        arr = [RLNode mj_objectArrayWithKeyValuesArray:response];
+//        for (RLNode *node in arr) {
+//            if (node.topics.intValue > 50) {
+//                i ++;
+//            }
+//        }
+//        NSLog(@"%d", i);
+//    } failure:^{
+//        
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
