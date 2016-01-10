@@ -21,6 +21,20 @@ static NSString *mainURL = @"https://www.v2ex.com";
 //单例
 SingleM(RLNetWorkManager)
 
+//获取节点话题列表
+- (NSURLSessionDataTask *)requestNodeTopicssWithID:(NSString *)nodeID success:(successBlock)block failure:(errorBlock)errorBlock {
+    NSString *URLStr = [NSString stringWithFormat:@"%@/api/topics/show.json?node_id=%@", mainURL, nodeID];
+    NSURLSessionDataTask *task = [self.sessionManager GET:URLStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[error.userInfo objectForKey:@"com.alamofire.serialization.response.error.data"]
+                                                            options:NSJSONReadingMutableContainers
+                                                              error:nil];//NSData转字典
+        RLLog(@"请求话题失败%@", [dic objectForKey:@"message"]);
+    }];
+    return task;
+}
+
 //根据url请求
 - (NSURLSessionDataTask *)requestWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock {
     NSString *URLStr = [mainURL stringByAppendingString:path];

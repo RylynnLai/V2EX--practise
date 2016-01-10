@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class RLNode;
+typedef void(^nodeBtnAction)(RLNode *nodeModel);
 @interface RLBubblesView : UIScrollView
 @property (nonatomic, strong) NSArray *nodeModels;
+@property (nonatomic, copy) nodeBtnAction clickAction;
 @end

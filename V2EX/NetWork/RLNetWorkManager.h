@@ -25,5 +25,5 @@ SingleH(RLNetWorkManager)
 - (NSOperation *)requestHTMLWithPath:(NSString *)path callBackBlock:(callBackBlock)black;
 
 /**请求节点数据*/
-- (NSURLSessionDataTask *)requestNodesWithPath:(NSString *)path success:(successBlock)block failure:(errorBlock)errorBlock;
+- (NSURLSessionDataTask *)requestNodeTopicssWithID:(NSString *)nodeID  success:(successBlock)block failure:(errorBlock)errorBlock;
 @end

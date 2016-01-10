@@ -7,6 +7,8 @@
 //
 
 #import "RLBubblesView.h"
+#import "RLNode.h"
+#import "RLNodeBtn.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define notAnimating 0
@@ -15,7 +17,6 @@
 #define gap 5
 
 @interface RLBubblesView()<UIScrollViewDelegate>
-//@property (nonatomic, strong) NSMutableArray *imagesArray;
 
 @property (nonatomic, strong) NSMutableArray *nodesBtnArray;
 @property (nonatomic, strong) NSMutableArray *imageNameArray;
@@ -31,7 +32,6 @@
     if (self = [super initWithFrame:frame]) {
         self.bigSize = CGSizeMake(60, 60);
         self.smallSize = CGSizeMake(30, 30);
-        
         [self setBackgroundColor:[UIColor blackColor]];
         self.delegate = self;
     }
@@ -42,7 +42,7 @@
     _nodeModels = nodeModels;
     
     float num = (self.mj_w * 2 - gutter * 2) / (60 + gap);
-    int rowNum = 100 / num ;
+    int rowNum = nodeModels.count / num ;
     [self setContentSize:CGSizeMake(self.mj_w * 2 + (gutter * 2) - gap, rowNum * (60 + gap) + (gutter * 2))];
     [self setContentOffset:CGPointMake(self.contentSize.width / 2 - self.mj_w / 2, self.contentSize.height / 2 - self.mj_h /2)];
 
@@ -50,10 +50,14 @@
     int yValue = gutter;
     int rowNumber = 1;
     
-    for (int zz = 0; zz < 100; zz++) {
-        UIButton *nodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    for (int zz = 0; zz < nodeModels.count; zz++) {
+        RLNode *nodeModel = nodeModels[zz];
+        RLNodeBtn *nodeBtn = [RLNodeBtn nodeBtnWithNodeModel:nodeModel];
+        [nodeBtn setTitle:nodeModel.title forState:UIControlStateNormal];
+        
         nodeBtn.frame = CGRectMake(xValue, yValue, 60, 60);
         [self addNodeBtnToScrollView:nodeBtn];
+        [nodeBtn addTarget:self action:@selector(nodeBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         
         xValue += (60 + gap);
         
@@ -70,13 +74,19 @@
 }
 
 - (void)addNodeBtnToScrollView:(UIButton *)btn {
-    [btn setImage:[UIImage imageNamed:[self.imageNameArray objectAtIndex:arc4random() % 9]] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:[self.imageNameArray objectAtIndex:arc4random() % 8]] forState:UIControlStateNormal];
     [btn.layer setCornerRadius:12];
     [btn.layer setMasksToBounds:YES];
     btn.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self addSubview:btn];
     [self.nodesBtnArray addObject:btn];
+}
+
+- (void)nodeBtnClick:(RLNodeBtn *)nodeBtn {
+    if (_nodeModels) {
+        _clickAction(nodeBtn.nodeModel);
+    }
 }
 
 #pragma mark ------------------------------------------------------------
@@ -92,7 +102,6 @@
         [_imageNameArray addObject:@"icon_six.png"];
         [_imageNameArray addObject:@"icon_seven.png"];
         [_imageNameArray addObject:@"icon_eight.png"];
-        [_imageNameArray addObject:@"icon_nine.png"];
         [_imageNameArray addObject:@"icon_ten.png"];
     }
     return _imageNameArray;
@@ -144,8 +153,7 @@
     
     dispatch_queue_t fetchQ = dispatch_queue_create("BubbleQueue", NULL);
     dispatch_async(fetchQ, ^{
-        for (UIButton *nodeBtn in self.nodesBtnArray)
-        {
+        for (UIButton *nodeBtn in self.nodesBtnArray) {
             CGRect thePosition = nodeBtn.frame;
             if(CGRectIntersectsRect(containerTwo, thePosition)) {
                 if (nodeBtn.tag == notAnimating) {

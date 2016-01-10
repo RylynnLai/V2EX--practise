@@ -28,6 +28,8 @@
 		1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */; };
 		1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */; };
 		1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */; };
+		F88334871C4292C300529C57 /* RLNodeTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */; };
+		F883348A1C429C1E00529C57 /* RLNodeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = F88334891C429C1E00529C57 /* RLNodeBtn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,10 @@
 		7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		920F8A219D83A1242B0A01BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0F29BE591A3865F293C4B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodeTopicsTVC.h; sourceTree = "<group>"; };
+		F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodeTopicsTVC.m; sourceTree = "<group>"; };
+		F88334881C429C1E00529C57 /* RLNodeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodeBtn.h; sourceTree = "<group>"; };
+		F88334891C429C1E00529C57 /* RLNodeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodeBtn.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,10 @@
 				1C6343D31C3B6EB9000301FA /* RLNodesVC.m */,
 				1C58CBAE1C3E47D80077B701 /* RLBubblesView.h */,
 				1C58CBAF1C3E47D80077B701 /* RLBubblesView.m */,
+				F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */,
+				F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */,
+				F88334881C429C1E00529C57 /* RLNodeBtn.h */,
+				F88334891C429C1E00529C57 /* RLNodeBtn.m */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -372,8 +382,10 @@
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
+				F883348A1C429C1E00529C57 /* RLNodeBtn.m in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
+				F88334871C4292C300529C57 /* RLNodeTopicsTVC.m in Sources */,
 				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
 				1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */,
 				1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */,
