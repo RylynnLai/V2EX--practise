@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RLTopicDetailVC">
             <connections>
+                <outlet property="WebViewConH" destination="qQb-D8-5M8" id="o7c-Ka-qaq"/>
                 <outlet property="authorBtn" destination="ErG-jx-a5A" id="fPg-VU-vrD"/>
                 <outlet property="authorLable" destination="0sp-eI-W9V" id="3IY-Dm-9OI"/>
+                <outlet property="contentWbV" destination="cOZ-CQ-ZOQ" id="p5f-0i-6iC"/>
                 <outlet property="createdTimeLable" destination="noR-95-hj3" id="g9t-wn-36Q"/>
                 <outlet property="loadingAIV" destination="VfA-UB-DEc" id="cVP-3a-a2r"/>
                 <outlet property="replieNumLable" destination="xZZ-WD-We0" id="Kh7-mS-Jkg"/>
@@ -100,16 +102,32 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
+                        <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOZ-CQ-ZOQ">
+                            <rect key="frame" x="0.0" y="77" width="375" height="10"/>
+                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="qQb-D8-5M8"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="85p-Dh-RhM"/>
+                            </connections>
+                        </webView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RJg-ef-O9K" customClass="RLRepliesTV">
+                            <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                            <color key="backgroundColor" red="1" green="0.86642937460000002" blue="0.49074996209999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </tableView>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VfA-UB-DEc">
                             <rect key="frame" x="177" y="324" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="cOZ-CQ-ZOQ" secondAttribute="trailing" id="1fg-nQ-E3w"/>
                         <constraint firstItem="xZZ-WD-We0" firstAttribute="leading" secondItem="noR-95-hj3" secondAttribute="trailing" constant="5" id="2H7-BU-m20"/>
                         <constraint firstAttribute="trailing" secondItem="SJo-ai-clX" secondAttribute="trailing" constant="10" id="4Nn-O2-Cwi"/>
                         <constraint firstItem="SJo-ai-clX" firstAttribute="centerY" secondItem="ErG-jx-a5A" secondAttribute="centerY" id="6GH-bJ-B2f"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xZZ-WD-We0" secondAttribute="trailing" constant="10" id="9ma-4X-0pN"/>
+                        <constraint firstItem="cOZ-CQ-ZOQ" firstAttribute="top" secondItem="xZZ-WD-We0" secondAttribute="bottom" id="AmH-yW-UUD"/>
                         <constraint firstAttribute="trailing" secondItem="SJo-ai-clX" secondAttribute="trailing" constant="10" id="Bxf-Yb-q33"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="568" id="Je9-45-vSy"/>
                         <constraint firstAttribute="trailing" secondItem="SJo-ai-clX" secondAttribute="trailing" constant="10" id="KoC-R5-v1p"/>
@@ -117,6 +135,7 @@
                         <constraint firstItem="xZZ-WD-We0" firstAttribute="centerY" secondItem="noR-95-hj3" secondAttribute="centerY" id="Rct-rI-QwF"/>
                         <constraint firstAttribute="width" id="SYf-R3-35g"/>
                         <constraint firstItem="xZZ-WD-We0" firstAttribute="height" secondItem="noR-95-hj3" secondAttribute="height" id="TbP-0D-LV9"/>
+                        <constraint firstItem="cOZ-CQ-ZOQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tkn-Vx-SCT"/>
                         <constraint firstItem="noR-95-hj3" firstAttribute="centerY" secondItem="0sp-eI-W9V" secondAttribute="centerY" id="acU-qR-4Oi"/>
                         <constraint firstItem="ErG-jx-a5A" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="age-cz-8DR"/>
                         <constraint firstAttribute="trailing" secondItem="SJo-ai-clX" secondAttribute="trailing" constant="10" id="cOB-g3-eM6"/>
@@ -171,7 +190,7 @@
             <connections>
                 <outlet property="delegate" destination="-1" id="GWI-eR-qQh"/>
             </connections>
-            <point key="canvasLocation" x="-25.5" y="-464.5"/>
+            <point key="canvasLocation" x="-165.5" y="-407.5"/>
         </scrollView>
     </objects>
 </document>

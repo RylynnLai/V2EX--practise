@@ -29,7 +29,7 @@ SingleM(RLTopicsTool)
 - (void)topicsWithCompletion:(void(^)(NSArray *topics))block option:(RLPageSelected)pageSelected{
     if (pageSelected == RLRecentTopicsPage) {
         if (_currentPageIdx == 1) [self.topics removeAllObjects];
-        NSString *path = [NSString stringWithFormat:@"/recent?p=%ld", _currentPageIdx];
+        NSString *path = [NSString stringWithFormat:@"/recent?p=%d", _currentPageIdx];
         [[RLNetWorkManager shareRLNetWorkManager] requestHTMLWithPath:path callBackBlock:^(NSArray *resArr) {
             NSArray *tempArr = [RLTopic parserHTMLStrs:resArr];
             for (RLTopic *topic in tempArr) {

@@ -20,8 +20,13 @@
 		1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F2D1C3271F2007A2C19 /* RLNetWorkManager.m */; };
 		1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F301C3271F2007A2C19 /* AppDelegate.m */; };
 		1C680F461C3271F2007A2C19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F311C3271F2007A2C19 /* main.m */; };
-		1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F351C3271F2007A2C19 /* NSString+HTMLTool.m */; };
 		1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F621C327D34007A2C19 /* NSString+Extension.m */; };
+		1C6B78151C433E270020A633 /* RLNodesHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B78141C433E270020A633 /* RLNodesHeadView.m */; };
+		1C6B78171C433E380020A633 /* RLNodesHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6B78161C433E380020A633 /* RLNodesHeadView.xib */; };
+		1C6B781E1C438DCB0020A633 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */; };
+		1C6B781F1C438DCB0020A633 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */; };
+		1C7566A01C449DC60062455F /* RLRepliesTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C75669F1C449DC60062455F /* RLRepliesTV.m */; };
+		1C770ECC1C45FE5E00CE0648 /* RLNodeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */; };
 		1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */; };
 		1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */; };
 		1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */; };
@@ -57,11 +62,18 @@
 		1C680F301C3271F2007A2C19 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1C680F311C3271F2007A2C19 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C680F321C3271F2007A2C19 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		1C680F341C3271F2007A2C19 /* NSString+HTMLTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLTool.h"; sourceTree = "<group>"; };
-		1C680F351C3271F2007A2C19 /* NSString+HTMLTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLTool.m"; sourceTree = "<group>"; };
 		1C680F361C3271F2007A2C19 /* Single.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
 		1C680F611C327D34007A2C19 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		1C680F621C327D34007A2C19 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		1C6B78131C433E270020A633 /* RLNodesHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodesHeadView.h; sourceTree = "<group>"; };
+		1C6B78141C433E270020A633 /* RLNodesHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodesHeadView.m; sourceTree = "<group>"; };
+		1C6B78161C433E380020A633 /* RLNodesHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLNodesHeadView.xib; sourceTree = "<group>"; };
+		1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1C75669E1C449DC60062455F /* RLRepliesTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLRepliesTV.h; sourceTree = "<group>"; };
+		1C75669F1C449DC60062455F /* RLRepliesTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLRepliesTV.m; sourceTree = "<group>"; };
+		1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
+		1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBtn.swift; sourceTree = "<group>"; };
 		1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicCell.h; sourceTree = "<group>"; };
 		1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicCell.m; sourceTree = "<group>"; };
@@ -86,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6B781E1C438DCB0020A633 /* libsqlite3.0.tbd in Frameworks */,
+				1C6B781F1C438DCB0020A633 /* libsqlite3.tbd in Frameworks */,
 				046911910817FAC6DC24598A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +118,11 @@
 				F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */,
 				F88334881C429C1E00529C57 /* RLNodeBtn.h */,
 				F88334891C429C1E00529C57 /* RLNodeBtn.m */,
+				1C6B78131C433E270020A633 /* RLNodesHeadView.h */,
+				1C6B78141C433E270020A633 /* RLNodesHeadView.m */,
+				1C6B78161C433E380020A633 /* RLNodesHeadView.xib */,
+				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
+				1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -132,7 +151,7 @@
 				1C6343D11C3B6E79000301FA /* Nodes */,
 				1C680F2B1C3271F2007A2C19 /* NetWork */,
 				1C680F331C3271F2007A2C19 /* Tool */,
-				1C680F2E1C3271F2007A2C19 /* other */,
+				1C680F2E1C3271F2007A2C19 /* Other */,
 				1C680F1C1C3271F2007A2C19 /* Assets.xcassets */,
 				1C680F1D1C3271F2007A2C19 /* LaunchScreen.storyboard */,
 				1C680F1F1C3271F2007A2C19 /* Info.plist */,
@@ -166,7 +185,7 @@
 			path = NetWork;
 			sourceTree = "<group>";
 		};
-		1C680F2E1C3271F2007A2C19 /* other */ = {
+		1C680F2E1C3271F2007A2C19 /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				1C680F2F1C3271F2007A2C19 /* AppDelegate.h */,
@@ -174,6 +193,7 @@
 				1C680F311C3271F2007A2C19 /* main.m */,
 				1C680F321C3271F2007A2C19 /* PrefixHeader.pch */,
 			);
+			name = Other;
 			path = other;
 			sourceTree = "<group>";
 		};
@@ -181,8 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */,
-				1C680F341C3271F2007A2C19 /* NSString+HTMLTool.h */,
-				1C680F351C3271F2007A2C19 /* NSString+HTMLTool.m */,
 				1C680F361C3271F2007A2C19 /* Single.h */,
 				1C680F611C327D34007A2C19 /* NSString+Extension.h */,
 				1C680F621C327D34007A2C19 /* NSString+Extension.m */,
@@ -209,6 +227,8 @@
 				1C97A2871C3A6FD700B954C2 /* RLTopicDetailVC.h */,
 				1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */,
 				1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */,
+				1C75669E1C449DC60062455F /* RLRepliesTV.h */,
+				1C75669F1C449DC60062455F /* RLRepliesTV.m */,
 			);
 			path = topicDetail;
 			sourceTree = "<group>";
@@ -234,6 +254,8 @@
 		48136B311EB4F8076D008DF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */,
+				1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */,
 				1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */,
 				920F8A219D83A1242B0A01BE /* libPods.a */,
 			);
@@ -278,6 +300,7 @@
 		1CF139FB1C1EB27E00674513 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = ucs;
 				TargetAttributes = {
@@ -310,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C6B78171C433E380020A633 /* RLNodesHeadView.xib in Resources */,
 				1C680F3D1C3271F2007A2C19 /* LaunchScreen.storyboard in Resources */,
 				1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */,
 				1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */,
@@ -374,6 +398,7 @@
 			files = (
 				1C6343D41C3B6EB9000301FA /* RLNodesVC.m in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
+				1C7566A01C449DC60062455F /* RLRepliesTV.m in Sources */,
 				1C58CBB01C3E47D80077B701 /* RLBubblesView.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
@@ -383,12 +408,13 @@
 				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				F883348A1C429C1E00529C57 /* RLNodeBtn.m in Sources */,
+				1C6B78151C433E270020A633 /* RLNodesHeadView.m in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
+				1C770ECC1C45FE5E00CE0648 /* RLNodeBtn.swift in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
 				F88334871C4292C300529C57 /* RLNodeTopicsTVC.m in Sources */,
 				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
 				1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */,
-				1C680F471C3271F2007A2C19 /* NSString+HTMLTool.m in Sources */,
 				1C6343DC1C3B717B000301FA /* RLMember.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +518,7 @@
 			baseConfigurationReference = 7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = V2EX/other/PrefixHeader.pch;
@@ -500,6 +527,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucs.www.V2EX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/Nodes/V2EX-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -508,6 +537,7 @@
 			baseConfigurationReference = EB0F29BE591A3865F293C4B1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = V2EX/other/PrefixHeader.pch;
@@ -516,6 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucs.www.V2EX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/Nodes/V2EX-Bridging-Header.h";
 			};
 			name = Release;
 		};

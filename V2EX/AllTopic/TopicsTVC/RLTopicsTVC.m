@@ -11,7 +11,7 @@
 #import "RLTopicCell.h"
 #import "RLTopicDetailVC.h"
 #import "AFNetWorking.h"
-#import "NSString+HTMLTool.h"
+#import "NSString+Extension.h"
 
 #define tagW screenW * 0.4
 #define tipicesNumOfEachPage 20

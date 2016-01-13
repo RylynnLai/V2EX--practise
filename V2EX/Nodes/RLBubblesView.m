@@ -75,17 +75,13 @@
 
 - (void)addNodeBtnToScrollView:(UIButton *)btn {
     [btn setBackgroundImage:[UIImage imageNamed:[self.imageNameArray objectAtIndex:arc4random() % 8]] forState:UIControlStateNormal];
-    [btn.layer setCornerRadius:12];
-    [btn.layer setMasksToBounds:YES];
-    btn.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [btn.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [self addSubview:btn];
     [self.nodesBtnArray addObject:btn];
 }
 
 - (void)nodeBtnClick:(RLNodeBtn *)nodeBtn {
     if (_nodeModels) {
-        _clickAction(nodeBtn.nodeModel);
+        _clickAction(nodeBtn.nodeModel);//用block传出去
     }
 }
 

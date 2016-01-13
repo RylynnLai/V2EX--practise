@@ -12,4 +12,7 @@
 /**格式化输出时间字符串*/
 + (NSString *)formatStringByTimeIntervalSince1970:(NSTimeInterval)timeInterval;
 + (NSString *)creatTimeByTimeIntervalSince1970:(NSTimeInterval)timeInterval;
+
+/**返回用于展示的文章正文*/
++ (NSString *)HTMLstringWithBody:(NSString *)body;
 @end

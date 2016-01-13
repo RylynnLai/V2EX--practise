@@ -31,6 +31,8 @@
 
 #import "UIButton+WebCache.h"
 
+#import "UIImageView+WebCache.h"
+
 #import "MJRefresh.h"
 
 #endif

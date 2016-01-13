@@ -10,49 +10,85 @@
 #import "RLNode.h"
 #import "RLTopic.h"
 #import "RLTopicCell.h"
-
+#import "RLNodesHeadView.h"
+#import "RLTopicDetailVC.h"
 
 @interface RLNodeTopicsTVC ()
 
 @property (nonatomic, strong) NSMutableArray *topics;
+@property (nonatomic, strong) RLNodesHeadView *headView;
 @end
 
 @implementation RLNodeTopicsTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _nodeModel.title;
-    
+    [self loadData];
+  
     //MJRefresh
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshData)];
-}
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.tableView.mj_header beginRefreshing];
+    
+    MJRefreshBackNormalFooter *footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    [footer setTitle:@"再拉也没用,Livid只给了我10条数据" forState:MJRefreshStateRefreshing];
+    self.tableView.mj_footer = footer;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView setTableHeaderView:self.headView];//只能放在这,配合table的头视图代理方法,自适应高度
+}
+
+- (void)loadData {
+    self.title = _nodeModel.title;
+    self.headView.nodeModel = _nodeModel;
+    //获取完整的节点数据
+    NSString *path = [NSString stringWithFormat:@"/api/nodes/show.json?id=%@", _nodeModel.ID];
+    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
+        _nodeModel = [RLNode mj_objectWithKeyValues:response];
+        self.headView.nodeModel = _nodeModel;
+    } failure:^{
+    }];
+}
+//下拉刷新
 - (void)refreshData {
     if (_nodeModel) {
         [[RLNetWorkManager shareRLNetWorkManager] requestNodeTopicssWithID:_nodeModel.ID success:^(id response) {
             self.topics = [RLTopic mj_objectArrayWithKeyValuesArray:response];
-            [self.tableView reloadData];
             [self.tableView.mj_header endRefreshing];
+            [self.tableView reloadData];
         } failure:^{
         }];
     }
 }
+//上拉刷新
+- (void)loadMore {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView.mj_footer endRefreshing];
+    });
+}
+
+#pragma mark ------------------------------------------------------------
+#pragma mark 懒加载
 - (NSMutableArray *)topics {
     if (!_topics) {
         _topics = [NSMutableArray array];
     }
     return _topics;
 }
-#pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.topics.count;
+- (RLNodesHeadView *)headView {
+    if (!_headView) {
+        _headView = [RLNodesHeadView nodesHeadView];
+    }
+    return _headView;
 }
 
+#pragma mark ------------------------------------------------------------
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.topics.count;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"nodeTopicCell";
@@ -64,54 +100,33 @@
         cell.topicModel = self.topics[indexPath.row];
     }
     return cell;
-    
 }
+
+#pragma mark ------------------------------------------------------------
+#pragma mark UITableViewDelegate
+//神奇地自动计算头视图高度
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
+    return self.headView.mj_h;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return self.headView;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 130;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.topics) {
+        RLTopicDetailVC *topicDetallVC = [[RLTopicDetailVC alloc] initWithNibName:@"RLTopicDetailVC" bundle:nil];
+        topicDetallVC.topicModel =  self.topics[indexPath.row];
+        
+        self.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:topicDetallVC animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

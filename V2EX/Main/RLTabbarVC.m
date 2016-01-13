@@ -21,7 +21,7 @@
     [self initUI];
     
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:[[RLTopicsTVC alloc] init]];
-    nav1.tabBarItem.title = @"话题";
+    nav1.tabBarItem.title = @"V2EX";
     [self addChildViewController:nav1];
     
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:[[RLNodesVC alloc] init]];

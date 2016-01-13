@@ -23,15 +23,23 @@
 @interface RLNode : NSObject
 @property (nonatomic, strong) NSString *ID;
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *name;//用于发请求
 
-@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *title;//实际显示
 
 @property (nonatomic, strong) NSString *title_alternative;
 
 @property (nonatomic, strong) NSString *url;
 
 @property (nonatomic, strong) NSString *topics;
+
+@property (nonatomic, strong) NSString *stars;
+
+@property (nonatomic, strong) NSString *header;
+
+@property (nonatomic, strong) NSString *footer;
+
+@property (nonatomic, strong) NSString *created;
 
 @property (nonatomic, strong) NSString *avatar_mini;
 

@@ -4,7 +4,7 @@
 //
 //  Created by 1 on 15/11/6.
 //  Copyright © 2015年 RL. All rights reserved.
-//
+//  解决中文打印乱码问题,不需要import,拉进工程就行
 
 
 #import <Foundation/Foundation.h>

@@ -18,10 +18,13 @@
     nodeBtn.titleLabel.minimumScaleFactor = 0.5;
     nodeBtn.titleLabel.numberOfLines = 2;
     nodeBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [nodeBtn.layer setCornerRadius:12];
+    [nodeBtn.layer setMasksToBounds:YES];
+    nodeBtn.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [nodeBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
     nodeBtn.nodeModel = nodeModel;
     return (RLNodeBtn *)nodeBtn;
 }
-
-
 
 @end

@@ -54,8 +54,8 @@
 - (RLBubblesView *)bubblesView {
     if (!_bubblesView) {
         RLBubblesView *bubblesView = [[RLBubblesView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        bubblesView.clickAction = ^(RLNode *nodeModel){
-            RLNodeTopicsTVC *nodeTopicsTVC = [[RLNodeTopicsTVC alloc] init];
+        bubblesView.clickAction = ^(RLNode *nodeModel){//node点击事件
+            RLNodeTopicsTVC *nodeTopicsTVC = [[RLNodeTopicsTVC alloc] initWithStyle:UITableViewStyleGrouped];
             nodeTopicsTVC.nodeModel = nodeModel;
             self.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:nodeTopicsTVC animated:YES];

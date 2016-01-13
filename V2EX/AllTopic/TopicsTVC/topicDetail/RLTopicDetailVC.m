@@ -7,18 +7,20 @@
 //
 
 #import "RLTopicDetailVC.h"
-#import "NSString+HTMLTool.h"
 #import "NSString+Extension.h"
 #import "RLTopicsTool.h"
+#import "RLRepliesTV.h"
 
-@interface RLTopicDetailVC ()<UIWebViewDelegate, UIScrollViewDelegate>
+@interface RLTopicDetailVC ()<UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingAIV;
 @property (weak, nonatomic) IBOutlet UILabel *authorLable;
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UILabel *createdTimeLable;
 @property (weak, nonatomic) IBOutlet UIButton *authorBtn;
 @property (weak, nonatomic) IBOutlet UILabel *replieNumLable;
-@property (strong, nonatomic) UIWebView *contentWbV;
+@property (weak, nonatomic) IBOutlet UIWebView *contentWbV;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *WebViewConH;
+
 @end
 
 @implementation RLTopicDetailVC
@@ -44,14 +46,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.mj_y = 20;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.navigationController.navigationBar.mj_y = 20;
+    }];
 }
 
 #pragma mark ------------------------------------------------------------
 #pragma mark 私有方法
 - (void)initUI {
     [self.view addSubview:self.contentWbV];
-    _loadingAIV.frame = CGRectMake(screenW * 0.5, screenH * 0.5, 20, 20);
+    _loadingAIV.frame = CGRectMake(self.view.mj_w * 0.5, self.view.mj_h * 0.5, 20, 20);
     _loadingAIV.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     _loadingAIV.hidesWhenStopped = YES;
 }
@@ -79,35 +83,63 @@
     _replieNumLable.text = [NSString stringWithFormat:@"%d个回复", [_topicModel.replies intValue]];
 }
 
+- (void)loadRepliesData {
+    NSString *path = [NSString stringWithFormat:@"/api/replies/show.json?topic_id=%@", self.topicModel.ID];
+    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
+        
+    } failure:^{
+    }];
+}
+
+- (void)addRepliesList {
+    
+}
 
 #pragma mark ------------------------------------------------------------
 #pragma mark 懒加载
-- (UIWebView *)contentWbV {
-    if (!_contentWbV) {
-        _contentWbV = [[UIWebView alloc] initWithFrame:CGRectMake(0, _authorLable.mj_h + _authorLable.mj_y, screenW, 10)];
-        _contentWbV.delegate = self;
-    }
-    return _contentWbV;
-}
+//- (UIWebView *)contentWbV {
+//    if (!_contentWbV) {
+//        _contentWbV = [[UIWebView alloc] initWithFrame:CGRectMake(0, _authorLable.mj_h + _authorLable.mj_y, screenW, 10)];
+//        _contentWbV.delegate = self;
+//    }
+//    return _contentWbV;
+//}
 
 #pragma mark ------------------------------------------------------------
 #pragma mark UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [_loadingAIV startAnimating];
+    [_loadingAIV startAnimating];//菊花
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [_loadingAIV stopAnimating];
-    webView.mj_h = webView.scrollView.contentSize.height + 64;//加上导航条和状态栏高度
-    webView.scrollView.scrollEnabled = NO;
-    UIScrollView *scrollView = (UIScrollView *)self.view;
-    scrollView.contentSize = CGSizeMake(webView.mj_w, webView.mj_h);
+    if (webView.isLoading) {
+        return;
+    }else {
+        //更新
+        [_loadingAIV stopAnimating];
+        webView.mj_h = webView.scrollView.contentSize.height + 64;//加上导航条和状态栏高度
+        webView.scrollView.scrollEnabled = NO;
+        UIScrollView *scrollView = (UIScrollView *)self.view;
+        scrollView.contentSize = CGSizeMake(webView.mj_w, webView.mj_h + 100);//10是预留给回复列表的
+        _WebViewConH.constant = webView.mj_h;
+        
+        RLLog(@"%f", webView.mj_h);
+    }
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
 
 }
 #pragma mark ------------------------------------------------------------
-#pragma mark UIScrollViewDelegate
+#pragma mark UITableViewDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     //当前为最顶上控制器才进行下面判断是否隐藏导航条
     if (self.navigationController.topViewController == self) {
