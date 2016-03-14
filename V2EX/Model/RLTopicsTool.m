@@ -8,6 +8,7 @@
 
 #import "RLTopicsTool.h"
 #import "RLTopic.h"
+#import "RLTopicReply.h"
 
 @interface RLTopicsTool()
 
@@ -45,6 +46,16 @@ SingleM(RLTopicsTool)
         } failure:^{
         }];
     }
+}
+//https://www.v2ex.com/api/replies/show.json?topic_id=26299
+
+- (void)topicRepliesWithTopicID:(NSString *)ID Completion:(void(^)(NSArray *replies))block {
+    NSString *path = [NSString stringWithFormat:@"/api/replies/show.json?topic_id=%@", ID];
+    [[RLNetWorkManager shareRLNetWorkManager] requestWithPath:path success:^(id response) {
+        NSArray *replies = [RLTopicReply mj_objectArrayWithKeyValuesArray:response];
+        block(replies);
+    } failure:^{
+    }];
 }
 
 - (NSMutableArray *)topics {

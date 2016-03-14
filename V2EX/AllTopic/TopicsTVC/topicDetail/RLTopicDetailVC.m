@@ -9,7 +9,6 @@
 #import "RLTopicDetailVC.h"
 #import "NSString+Extension.h"
 #import "RLTopicsTool.h"
-#import "RLRepliesTV.h"
 
 @interface RLTopicDetailVC ()<UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingAIV;
@@ -19,7 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *authorBtn;
 @property (weak, nonatomic) IBOutlet UILabel *replieNumLable;
 @property (strong, nonatomic) UIWebView *contentWbV;
+@property (nonatomic, strong) UITableView *repliesListView;
 
+@property (nonatomic, strong) NSArray *replies;
 @end
 
 @implementation RLTopicDetailVC
@@ -49,6 +50,8 @@
         self.navigationController.navigationBar.mj_y = 20;
     }];
 }
+
+
 
 #pragma mark ------------------------------------------------------------
 #pragma mark 私有方法
@@ -88,6 +91,7 @@
         
     } failure:^{
     }];
+    
 }
 
 - (void)addRepliesList {
@@ -102,6 +106,15 @@
         _contentWbV.delegate = self;
     }
     return _contentWbV;
+}
+
+- (UITableView *)repliesListView {
+    if (!_repliesListView) {
+        _repliesListView = [UITableView new];
+        _repliesListView.delegate = self;
+        _repliesListView.dataSource = self;
+    }
+    return _repliesListView;
 }
 
 #pragma mark ------------------------------------------------------------
@@ -119,6 +132,14 @@
         webView.scrollView.scrollEnabled = NO;
         UIScrollView *scrollView = (UIScrollView *)self.view;
         scrollView.contentSize = CGSizeMake(webView.mj_w, webView.mj_h + 100);//10是预留给回复列表的
+        
+        //MJRefresh
+        MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadRepliesData)];
+        footer.refreshingTitleHidden = YES;
+        footer.stateLabel.textColor = [UIColor lightGrayColor];
+        footer.stateLabel.alpha = 0.4;
+        [footer setTitle:@"点击或上拉显示评论列表" forState:MJRefreshStateIdle];
+        scrollView.mj_footer = footer;
     }
     
 }
@@ -126,16 +147,9 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
 
 }
+
 #pragma mark ------------------------------------------------------------
-#pragma mark UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
+#pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     //当前为最顶上控制器才进行下面判断是否隐藏导航条
     if (self.navigationController.topViewController == self) {
@@ -150,5 +164,18 @@
             }];
         }
     }
+}
+
+#pragma mark ------------------------------------------------------------
+#pragma mark UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.replies.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"replyCell"];
+    if (!cell) {
+        cell = [UITableViewCell new];
+    }
+    return cell;
 }
 @end
