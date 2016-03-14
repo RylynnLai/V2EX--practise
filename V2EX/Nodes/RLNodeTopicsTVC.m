@@ -58,6 +58,8 @@
             [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
         } failure:^{
+            RLLog(@"获取节点话题列表失败");
+            [self.tableView.mj_header endRefreshing];
         }];
     }
 }

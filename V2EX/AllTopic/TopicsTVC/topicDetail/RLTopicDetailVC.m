@@ -18,8 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *createdTimeLable;
 @property (weak, nonatomic) IBOutlet UIButton *authorBtn;
 @property (weak, nonatomic) IBOutlet UILabel *replieNumLable;
-@property (weak, nonatomic) IBOutlet UIWebView *contentWbV;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *WebViewConH;
+@property (strong, nonatomic) UIWebView *contentWbV;
 
 @end
 
@@ -97,13 +96,13 @@
 
 #pragma mark ------------------------------------------------------------
 #pragma mark 懒加载
-//- (UIWebView *)contentWbV {
-//    if (!_contentWbV) {
-//        _contentWbV = [[UIWebView alloc] initWithFrame:CGRectMake(0, _authorLable.mj_h + _authorLable.mj_y, screenW, 10)];
-//        _contentWbV.delegate = self;
-//    }
-//    return _contentWbV;
-//}
+- (UIWebView *)contentWbV {
+    if (!_contentWbV) {
+        _contentWbV = [[UIWebView alloc] initWithFrame:CGRectMake(0, _authorLable.mj_h + _authorLable.mj_y, screenW, 10)];
+        _contentWbV.delegate = self;
+    }
+    return _contentWbV;
+}
 
 #pragma mark ------------------------------------------------------------
 #pragma mark UIWebViewDelegate
@@ -120,9 +119,6 @@
         webView.scrollView.scrollEnabled = NO;
         UIScrollView *scrollView = (UIScrollView *)self.view;
         scrollView.contentSize = CGSizeMake(webView.mj_w, webView.mj_h + 100);//10是预留给回复列表的
-        _WebViewConH.constant = webView.mj_h;
-        
-        RLLog(@"%f", webView.mj_h);
     }
     
 }

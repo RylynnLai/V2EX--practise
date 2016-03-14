@@ -7,10 +7,11 @@
 //
 
 #import "RLNodesVC.h"
-#import "RLBubblesView.h"
+//#import "RLBubblesView.h"
 #import "RLNode.h"
 #import "RLNodeTopicsTVC.h"
 #import "MJExtension.h"
+//#import "V2EXModule-swift.h"
 
 @interface RLNodesVC ()
 @property (nonatomic, strong) UIScrollView *nodesScrollView;
@@ -54,13 +55,14 @@
 - (RLBubblesView *)bubblesView {
     if (!_bubblesView) {
         RLBubblesView *bubblesView = [[RLBubblesView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        bubblesView.clickAction = ^(RLNode *nodeModel){//node点击事件
+        bubblesView.nodeBtnAction = ^(RLNode *nodeModel){//node点击事件
             RLNodeTopicsTVC *nodeTopicsTVC = [[RLNodeTopicsTVC alloc] initWithStyle:UITableViewStyleGrouped];
             nodeTopicsTVC.nodeModel = nodeModel;
             self.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:nodeTopicsTVC animated:YES];
             self.hidesBottomBarWhenPushed = NO;
         };
+        
         _bubblesView = bubblesView;
         [self.view addSubview:_bubblesView];
     }
