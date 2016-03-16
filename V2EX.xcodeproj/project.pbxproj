@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
+		0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */; };
 		1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9431C4778920089F1A7 /* RLBubblesView.swift */; };
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
 		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesHeadView.swift; sourceTree = "<group>"; };
 		1C56B9431C4778920089F1A7 /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		1C56B9451C4780890089F1A7 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
 				1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */,
 				1C56B9431C4778920089F1A7 /* RLBubblesView.swift */,
+				0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			files = (
 				1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */,
 				1C6343D41C3B6EB9000301FA /* RLNodesVC.m in Sources */,
+				0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,

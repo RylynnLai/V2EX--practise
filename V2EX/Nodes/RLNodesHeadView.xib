@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,12 +18,6 @@
                         <constraint firstAttribute="height" constant="50" id="a6W-fJ-KdL"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx7-cr-c9u">
-                    <rect key="frame" x="70" y="10" width="225" height="50"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z4-OO-0W5">
                     <rect key="frame" x="10" y="65" width="355" height="36"/>
                     <constraints>
@@ -72,6 +66,12 @@
                             <exclude reference="I5b-l4-bYi"/>
                         </mask>
                     </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx7-cr-c9u">
+                    <rect key="frame" x="70" y="10" width="225" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -141,10 +141,10 @@
             </variation>
             <connections>
                 <outlet property="descriptionLable" destination="4Z4-OO-0W5" id="P4s-1o-Zfe"/>
-                <outlet property="iconImgV" destination="xL8-rV-8LL" id="02I-70-2xQ"/>
-                <outlet property="startsNumLable" destination="eeU-kY-u1A" id="o3N-oM-2HM"/>
-                <outlet property="titleLable" destination="Sx7-cr-c9u" id="BaC-RL-KMk"/>
-                <outlet property="topicsNumLable" destination="eVu-Jd-zdt" id="wGv-Bq-Qtl"/>
+                <outlet property="iconImgV" destination="xL8-rV-8LL" id="3GR-w5-nYq"/>
+                <outlet property="startsNumLable" destination="eeU-kY-u1A" id="rPX-Zv-c6F"/>
+                <outlet property="titleLable" destination="Sx7-cr-c9u" id="NOq-6S-iLK"/>
+                <outlet property="topicsNumLable" destination="eVu-Jd-zdt" id="mzC-Mg-tbs"/>
             </connections>
             <point key="canvasLocation" x="67.5" y="330"/>
         </view>
