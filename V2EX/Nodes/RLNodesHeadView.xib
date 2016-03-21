@@ -140,13 +140,13 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="descriptionLable" destination="4Z4-OO-0W5" id="P4s-1o-Zfe"/>
-                <outlet property="iconImgV" destination="xL8-rV-8LL" id="3GR-w5-nYq"/>
-                <outlet property="startsNumLable" destination="eeU-kY-u1A" id="rPX-Zv-c6F"/>
-                <outlet property="titleLable" destination="Sx7-cr-c9u" id="NOq-6S-iLK"/>
-                <outlet property="topicsNumLable" destination="eVu-Jd-zdt" id="mzC-Mg-tbs"/>
+                <outlet property="_descriptionLable" destination="4Z4-OO-0W5" id="rLy-Ay-LQV"/>
+                <outlet property="_iconImgV" destination="xL8-rV-8LL" id="7k8-NG-TXk"/>
+                <outlet property="_startsNumLable" destination="eeU-kY-u1A" id="tQu-hL-6uL"/>
+                <outlet property="_titleLable" destination="Sx7-cr-c9u" id="Ddd-95-CmU"/>
+                <outlet property="_topicsNumLable" destination="eVu-Jd-zdt" id="tWM-Y8-AnZ"/>
             </connections>
-            <point key="canvasLocation" x="67.5" y="330"/>
+            <point key="canvasLocation" x="277.5" y="321"/>
         </view>
     </objects>
 </document>

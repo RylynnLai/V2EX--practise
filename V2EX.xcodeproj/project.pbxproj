@@ -23,7 +23,6 @@
 		1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F301C3271F2007A2C19 /* AppDelegate.m */; };
 		1C680F461C3271F2007A2C19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F311C3271F2007A2C19 /* main.m */; };
 		1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F621C327D34007A2C19 /* NSString+Extension.m */; };
-		1C6B78151C433E270020A633 /* RLNodesHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B78141C433E270020A633 /* RLNodesHeadView.m */; };
 		1C6B78171C433E380020A633 /* RLNodesHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6B78161C433E380020A633 /* RLNodesHeadView.xib */; };
 		1C6B781E1C438DCB0020A633 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */; };
 		1C6B781F1C438DCB0020A633 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */; };
@@ -69,8 +68,6 @@
 		1C680F361C3271F2007A2C19 /* Single.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
 		1C680F611C327D34007A2C19 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		1C680F621C327D34007A2C19 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
-		1C6B78131C433E270020A633 /* RLNodesHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodesHeadView.h; sourceTree = "<group>"; };
-		1C6B78141C433E270020A633 /* RLNodesHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodesHeadView.m; sourceTree = "<group>"; };
 		1C6B78161C433E380020A633 /* RLNodesHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLNodesHeadView.xib; sourceTree = "<group>"; };
 		1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -119,8 +116,6 @@
 				1C6343D31C3B6EB9000301FA /* RLNodesVC.m */,
 				F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */,
 				F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */,
-				1C6B78131C433E270020A633 /* RLNodesHeadView.h */,
-				1C6B78141C433E270020A633 /* RLNodesHeadView.m */,
 				1C6B78161C433E380020A633 /* RLNodesHeadView.xib */,
 				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
 				1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */,
@@ -415,7 +410,6 @@
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
-				1C6B78151C433E270020A633 /* RLNodesHeadView.m in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
 				1C770ECC1C45FE5E00CE0648 /* RLNodeBtn.swift in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
