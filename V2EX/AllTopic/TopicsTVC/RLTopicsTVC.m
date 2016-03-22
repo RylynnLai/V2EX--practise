@@ -69,7 +69,7 @@
         });
         return;
     }
-    NSInteger pageIdx = [[RLTopicsTool shareRLTopicsTool] currentPageIdx];
+    int pageIdx = [[RLTopicsTool shareRLTopicsTool] currentPageIdx];
     [[RLTopicsTool shareRLTopicsTool] setCurrentPageIdx:pageIdx + 1];
     [self loadData];
 }
@@ -158,7 +158,7 @@
     static NSString *ID = @"topicCell";
     RLTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
-        cell = [RLTopicCell topicCell];
+        cell = (RLTopicCell *)[RLTopicCell instantiateFromNib];
     }
     if (self.topics.count > 0) {
         cell.topicModel = self.topics[indexPath.row];

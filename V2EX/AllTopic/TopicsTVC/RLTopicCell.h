@@ -11,6 +11,5 @@
 @class RLTopic;
 @interface RLTopicCell : UITableViewCell
 
-+ (instancetype)topicCell;
 @property (nonatomic, strong) RLTopic *topicModel;
 @end
