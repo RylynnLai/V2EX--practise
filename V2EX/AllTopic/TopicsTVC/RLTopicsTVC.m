@@ -69,7 +69,7 @@
         });
         return;
     }
-    NSInteger pageIdx = [[RLTopicsTool shareRLTopicsTool] currentPageIdx];
+    int pageIdx = [[RLTopicsTool shareRLTopicsTool] currentPageIdx];
     [[RLTopicsTool shareRLTopicsTool] setCurrentPageIdx:pageIdx + 1];
     [self loadData];
 }

@@ -31,7 +31,9 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             var rowNumber = 1
             
             var nodeModel:RLNode
-            for var zz = 0; zz < nodeModels!.count; zz++ {
+            
+//            for var zz = 0; zz < nodeModels!.count; zz += 1 
+            for zz in 0 ..< nodeModels!.count {
                 nodeModel = nodeModels![zz] as! RLNode
                 
                 let nodeBtn = RLNodeBtn(type:.Custom)
@@ -43,7 +45,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
                 self.addSubview(nodeBtn)
                 nodesBtnArray.addObject(nodeBtn)
                 
-                nodeBtn.addTarget(self, action: Selector("nodeBtnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
+                nodeBtn.addTarget(self, action: #selector(RLBubblesView.nodeBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 
                 xValue += (60 + gap);
                 
@@ -84,7 +86,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
     }()
 
     
-    // 定义一个闭包（空），由外部定义，本类调用
+    // 声明一个闭包（空），由外部定义，本类调用
     var nodeBtnAction:(nodeModel:RLNode) -> () = {_ in }
     // MARK: init
     override init(frame: CGRect) {
