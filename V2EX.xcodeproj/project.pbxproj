@@ -116,11 +116,11 @@
 				1C6343D31C3B6EB9000301FA /* RLNodesVC.m */,
 				F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */,
 				F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */,
+				0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */,
 				1C6B78161C433E380020A633 /* RLNodesHeadView.xib */,
 				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
 				1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */,
 				1C56B9431C4778920089F1A7 /* RLBubblesView.swift */,
-				0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";

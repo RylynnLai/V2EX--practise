@@ -10,7 +10,6 @@
 #import "RLNode.h"
 #import "RLTopic.h"
 #import "RLTopicCell.h"
-#import "RLNodesHeadView.h"
 #import "RLTopicDetailVC.h"
 
 @interface RLNodeTopicsTVC ()
@@ -81,7 +80,7 @@
 
 - (RLNodesHeadView *)headView {
     if (!_headView) {
-        _headView = [RLNodesHeadView nodesHeadView];
+        _headView = (RLNodesHeadView *)[RLNodesHeadView instantiateFromNib];
     }
     return _headView;
 }
@@ -96,7 +95,7 @@
     static NSString *ID = @"nodeTopicCell";
     RLTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
-        cell = [RLTopicCell topicCell];
+        cell = (RLTopicCell *)[RLTopicCell instantiateFromNib];
     }
     if (self.topics.count > 0) {
         cell.topicModel = self.topics[indexPath.row];

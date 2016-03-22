@@ -4,4 +4,6 @@
 
 #import "RLNode.h"
 
+
+#import "UIImageView+WebCache.h"
 #import "MJRefresh.h"

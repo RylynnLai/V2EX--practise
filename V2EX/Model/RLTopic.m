@@ -60,6 +60,7 @@
         topic.member.username = [tempStr substringToIndex:rangEnd.location];
         
         rangeStart = [tempStr rangeOfString:@"</strong> &nbsp;•&nbsp;"];
+        if (rangeStart.location == NSNotFound) continue;
         tempStr = [tempStr substringFromIndex:rangeStart.location + rangeStart.length];
         rangEnd = [tempStr rangeOfString:@"&nbsp;•&nbsp;"];
         if (rangEnd.location == NSNotFound) rangEnd = [tempStr rangeOfString:@"</span>"];
