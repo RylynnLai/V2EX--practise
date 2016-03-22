@@ -158,7 +158,7 @@
     static NSString *ID = @"topicCell";
     RLTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
-        cell = [RLTopicCell topicCell];
+        cell = (RLTopicCell *)[RLTopicCell instantiateFromNib];
     }
     if (self.topics.count > 0) {
         cell.topicModel = self.topics[indexPath.row];

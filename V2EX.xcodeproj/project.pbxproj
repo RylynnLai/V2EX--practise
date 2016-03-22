@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
 		0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */; };
+		0EC9D5911CA1181A0014D297 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */; };
 		1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9431C4778920089F1A7 /* RLBubblesView.swift */; };
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
 		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
@@ -36,11 +37,12 @@
 		1CEB12B41C966B1C00A1B651 /* RLReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEB12B21C966B1C00A1B651 /* RLReplyCell.m */; };
 		1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */ = {isa = PBXBuildFile; fileRef = F8580AB31C9465CD00FCB034 /* RLTopicReply.m */; };
 		1CEB12BB1C966DB400A1B651 /* RLReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CEB12B91C966D9A00A1B651 /* RLReplyCell.xib */; };
-		F88334871C4292C300529C57 /* RLNodeTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesHeadView.swift; sourceTree = "<group>"; };
+		0E827C0E1CA0F282007C582D /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
+		0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		1C56B9431C4778920089F1A7 /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		1C56B9451C4780890089F1A7 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
@@ -71,7 +73,6 @@
 		1C6B78161C433E380020A633 /* RLNodesHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLNodesHeadView.xib; sourceTree = "<group>"; };
 		1C6B781C1C438DCB0020A633 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C6B781D1C438DCB0020A633 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeBtn.swift; sourceTree = "<group>"; };
 		1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicCell.h; sourceTree = "<group>"; };
@@ -91,8 +92,6 @@
 		EB0F29BE591A3865F293C4B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F8580AB21C9465CD00FCB034 /* RLTopicReply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicReply.h; sourceTree = "<group>"; };
 		F8580AB31C9465CD00FCB034 /* RLTopicReply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicReply.m; sourceTree = "<group>"; };
-		F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNodeTopicsTVC.h; sourceTree = "<group>"; };
-		F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNodeTopicsTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +113,11 @@
 			children = (
 				1C6343D21C3B6EB9000301FA /* RLNodesVC.h */,
 				1C6343D31C3B6EB9000301FA /* RLNodesVC.m */,
-				F88334851C4292C300529C57 /* RLNodeTopicsTVC.h */,
-				F88334861C4292C300529C57 /* RLNodeTopicsTVC.m */,
 				0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */,
 				1C6B78161C433E380020A633 /* RLNodesHeadView.xib */,
 				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
-				1C770ECA1C45FE5E00CE0648 /* V2EX-Bridging-Header.h */,
 				1C56B9431C4778920089F1A7 /* RLBubblesView.swift */,
+				0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -192,6 +189,7 @@
 				1C680F301C3271F2007A2C19 /* AppDelegate.m */,
 				1C680F311C3271F2007A2C19 /* main.m */,
 				1C680F321C3271F2007A2C19 /* PrefixHeader.pch */,
+				0E827C0E1CA0F282007C582D /* V2EX-Bridging-Header.h */,
 			);
 			name = Other;
 			path = other;
@@ -406,6 +404,7 @@
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
 				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
+				0EC9D5911CA1181A0014D297 /* RLNodeTopicsTVC.swift in Sources */,
 				1C6343DE1C3B717B000301FA /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
@@ -415,7 +414,6 @@
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
 				1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */,
 				1CEB12B41C966B1C00A1B651 /* RLReplyCell.m in Sources */,
-				F88334871C4292C300529C57 /* RLNodeTopicsTVC.m in Sources */,
 				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
 				1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */,
 				1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */,
@@ -532,7 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucs.www.V2EX;
 				PRODUCT_MODULE_NAME = V2EXModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/Nodes/V2EX-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/other/V2EX-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -552,7 +550,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucs.www.V2EX;
 				PRODUCT_MODULE_NAME = V2EXModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/Nodes/V2EX-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "V2EX/other/V2EX-Bridging-Header.h";
 			};
 			name = Release;
 		};
