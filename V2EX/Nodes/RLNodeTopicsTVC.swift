@@ -46,29 +46,36 @@ class RLNodeTopicsTVC: UITableViewController {
         self.headView.nodeModel = nodeModel
         //获取完整的节点数据
         let path = "/api/nodes/show.json?id=\(nodeModel!.ID)"
-        RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { (response) -> Void in
-            self.nodeModel = RLNode.mj_objectWithKeyValues(response)
-            self.headView.nodeModel = self.nodeModel
-            self.tableView.mj_header.beginRefreshing()
+        RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { [weak self] (response) -> Void in
+            if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
+                strongSelf.nodeModel = RLNode.mj_objectWithKeyValues(response)
+                strongSelf.headView.nodeModel = strongSelf.nodeModel
+                strongSelf.tableView.mj_header.beginRefreshing()
+            }
             }, failure:{ () -> Void in
         })
     }
     //下拉刷新
     func refreshData() {
         if nodeModel != nil {
-            RLNetWorkManager.shareRLNetWorkManager().requestNodeTopicssWithID(nodeModel?.ID, success: { (response) -> Void in
-                self.topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
-                self.tableView.mj_header.endRefreshing()
-                self.tableView.reloadData()
+            RLNetWorkManager.shareRLNetWorkManager().requestNodeTopicssWithID(nodeModel?.ID, success: { [weak self] (response) -> Void in
+                if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
+                    strongSelf.topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
+                    strongSelf.tableView.mj_header.endRefreshing()
+                    strongSelf.tableView.reloadData()
+                }
                 }, failure: { () -> Void in
                 self.tableView.mj_header.endRefreshing()
+                    
             })
         }
     }
     //上拉加载更多
     func loadMore() {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-            self.tableView.mj_footer.endRefreshing()
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { [weak self] () -> Void in
+            if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
+                strongSelf.tableView.mj_footer.endRefreshing()
+            }
         }
     }
     //MARK: -Table view data source
