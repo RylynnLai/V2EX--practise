@@ -25,13 +25,14 @@ class RLNodeTopicsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         //MJRefresh
         header.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsTVC.refreshData))
         self.tableView.mj_header = header
         footer.setRefreshingTarget(self, refreshingAction: #selector(RLNodeTopicsTVC.loadMore))
         footer.setTitle("再拉也没用,Livid只给了我10条数据", forState: .Refreshing)
         self.tableView.mj_footer = footer
+        
+        loadData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -48,7 +49,7 @@ class RLNodeTopicsTVC: UITableViewController {
         RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { (response) -> Void in
             self.nodeModel = RLNode.mj_objectWithKeyValues(response)
             self.headView.nodeModel = self.nodeModel
-//            self.refreshData()
+            self.tableView.mj_header.beginRefreshing()
             }, failure:{ () -> Void in
         })
     }
