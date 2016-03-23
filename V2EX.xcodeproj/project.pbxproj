@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
+		0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */; };
 		0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */; };
-		0EC9D5911CA1181A0014D297 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */; };
 		1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9431C4778920089F1A7 /* RLBubblesView.swift */; };
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
 		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
@@ -40,9 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesHeadView.swift; sourceTree = "<group>"; };
 		0E827C0E1CA0F282007C582D /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
-		0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		1C56B9431C4778920089F1A7 /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		1C56B9451C4780890089F1A7 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				1C6B78161C433E380020A633 /* RLNodesHeadView.xib */,
 				1C770ECB1C45FE5E00CE0648 /* RLNodeBtn.swift */,
 				1C56B9431C4778920089F1A7 /* RLBubblesView.swift */,
-				0EC9D5901CA1181A0014D297 /* RLNodeTopicsTVC.swift */,
+				0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -142,10 +142,10 @@
 		1C680F101C3271F2007A2C19 /* V2EX */ = {
 			isa = PBXGroup;
 			children = (
-				1C6343D51C3B717B000301FA /* Model */,
 				1C680F201C3271F2007A2C19 /* Main */,
 				1C680F111C3271F2007A2C19 /* AllTopic */,
 				1C6343D11C3B6E79000301FA /* Nodes */,
+				1C6343D51C3B717B000301FA /* Model */,
 				1C680F2B1C3271F2007A2C19 /* NetWork */,
 				1C680F331C3271F2007A2C19 /* Tool */,
 				1C680F2E1C3271F2007A2C19 /* Other */,
@@ -404,12 +404,12 @@
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
 				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
-				0EC9D5911CA1181A0014D297 /* RLNodeTopicsTVC.swift in Sources */,
 				1C6343DE1C3B717B000301FA /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
+				0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */,
 				1C770ECC1C45FE5E00CE0648 /* RLNodeBtn.swift in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
 				1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */,
