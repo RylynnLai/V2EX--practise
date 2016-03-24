@@ -87,7 +87,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
     
     // 声明一个闭包（空），由外部定义，本类调用
-    var nodeBtnAction:(nodeModel:RLNode) -> () = {_ in }
+    var nodeBtnAction:(nodeModel:RLNode) -> Void = {_ in }
     // MARK: init
     override init(frame: CGRect) {
         bigSize = CGSizeMake(60, 60)
