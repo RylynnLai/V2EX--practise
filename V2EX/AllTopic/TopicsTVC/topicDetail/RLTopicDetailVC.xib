@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RLTopicDetailVC">
             <connections>
-                <outlet property="authorBtn" destination="ErG-jx-a5A" id="fPg-VU-vrD"/>
-                <outlet property="authorLable" destination="0sp-eI-W9V" id="3IY-Dm-9OI"/>
-                <outlet property="createdTimeLable" destination="noR-95-hj3" id="g9t-wn-36Q"/>
-                <outlet property="loadingAIV" destination="VfA-UB-DEc" id="cVP-3a-a2r"/>
-                <outlet property="replieNumLable" destination="xZZ-WD-We0" id="Kh7-mS-Jkg"/>
-                <outlet property="titleLable" destination="SJo-ai-clX" id="3si-zC-juK"/>
+                <outlet property="authorBtn" destination="ErG-jx-a5A" id="rtW-PP-a0f"/>
+                <outlet property="authorLable" destination="0sp-eI-W9V" id="AmL-3f-Jls"/>
+                <outlet property="createdTimeLable" destination="noR-95-hj3" id="veq-9Q-HKU"/>
+                <outlet property="loadingAIV" destination="VfA-UB-DEc" id="xx0-xP-tRH"/>
+                <outlet property="replieNumLable" destination="xZZ-WD-We0" id="SmP-Hq-DhL"/>
+                <outlet property="titleLable" destination="SJo-ai-clX" id="Iu7-MY-ocH"/>
                 <outlet property="view" destination="CdO-lR-49e" id="GP3-nK-n0p"/>
             </connections>
         </placeholder>
@@ -171,7 +171,7 @@
             <connections>
                 <outlet property="delegate" destination="-1" id="GWI-eR-qQh"/>
             </connections>
-            <point key="canvasLocation" x="-165.5" y="-407.5"/>
+            <point key="canvasLocation" x="181.5" y="-324.5"/>
         </scrollView>
     </objects>
 </document>

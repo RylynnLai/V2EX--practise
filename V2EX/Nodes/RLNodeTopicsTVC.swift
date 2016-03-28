@@ -109,7 +109,7 @@ class RLNodeTopicsTVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if topics.count > 0 {
             let topicDetallVC = RLTopicDetailVC.init(nibName: NSStringFromClass(RLTopicDetailVC), bundle: nil)
-            topicDetallVC.topicModel = self.topics[indexPath.row] as! RLTopic
+            topicDetallVC.topicModel = self.topics[indexPath.row] as? RLTopic
             
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(topicDetallVC, animated: true)

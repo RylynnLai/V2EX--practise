@@ -11,6 +11,7 @@
 		0E4F8AEC1CA3947400DA9E84 /* RLNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */; };
 		0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */; };
 		0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */; };
+		0E9A1B111CA3EBF000346D56 /* RLTopicDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A1B101CA3EBF000346D56 /* RLTopicDetailVC.swift */; };
 		1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9431C4778920089F1A7 /* RLBubblesView.swift */; };
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
 		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
@@ -32,7 +33,6 @@
 		1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */; };
 		1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */; };
 		1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */; };
-		1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */; };
 		1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */; };
 		1CEB12B41C966B1C00A1B651 /* RLReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEB12B21C966B1C00A1B651 /* RLReplyCell.m */; };
 		1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */ = {isa = PBXBuildFile; fileRef = F8580AB31C9465CD00FCB034 /* RLTopicReply.m */; };
@@ -44,6 +44,7 @@
 		0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesHeadView.swift; sourceTree = "<group>"; };
 		0E827C0E1CA0F282007C582D /* V2EX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "V2EX-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E9A1B101CA3EBF000346D56 /* RLTopicDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicDetailVC.swift; sourceTree = "<group>"; };
 		1C56B9431C4778920089F1A7 /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		1C56B9451C4780890089F1A7 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
@@ -79,8 +80,6 @@
 		1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
 		1C97A2841C3A6FD700B954C2 /* RLTopicsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTVC.h; sourceTree = "<group>"; };
 		1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicsTVC.m; sourceTree = "<group>"; };
-		1C97A2871C3A6FD700B954C2 /* RLTopicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicDetailVC.h; sourceTree = "<group>"; };
-		1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicDetailVC.m; sourceTree = "<group>"; };
 		1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicDetailVC.xib; sourceTree = "<group>"; };
 		1CEB12B11C966B1C00A1B651 /* RLReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLReplyCell.h; sourceTree = "<group>"; };
 		1CEB12B21C966B1C00A1B651 /* RLReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLReplyCell.m; sourceTree = "<group>"; };
@@ -224,8 +223,7 @@
 				1CEB12B11C966B1C00A1B651 /* RLReplyCell.h */,
 				1CEB12B21C966B1C00A1B651 /* RLReplyCell.m */,
 				1CEB12B91C966D9A00A1B651 /* RLReplyCell.xib */,
-				1C97A2871C3A6FD700B954C2 /* RLTopicDetailVC.h */,
-				1C97A2881C3A6FD700B954C2 /* RLTopicDetailVC.m */,
+				0E9A1B101CA3EBF000346D56 /* RLTopicDetailVC.swift */,
 				1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */,
 			);
 			path = topicDetail;
@@ -410,11 +408,11 @@
 				1C770ECC1C45FE5E00CE0648 /* RLNodeBtn.swift in Sources */,
 				0E4F8AEC1CA3947400DA9E84 /* RLNodesVC.swift in Sources */,
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
+				0E9A1B111CA3EBF000346D56 /* RLTopicDetailVC.swift in Sources */,
 				1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */,
 				1CEB12B41C966B1C00A1B651 /* RLReplyCell.m in Sources */,
 				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
 				1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */,
-				1C97A28D1C3A6FD700B954C2 /* RLTopicDetailVC.m in Sources */,
 				1C6343DC1C3B717B000301FA /* RLMember.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
