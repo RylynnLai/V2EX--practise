@@ -4,7 +4,7 @@
 
 #import "RLNode.h"
 #import "RLTopicCell.h"
-//#import "RLTopicDetailVC.h"
+#import "RLTopicReply.h"
 #import "RLTopic.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
