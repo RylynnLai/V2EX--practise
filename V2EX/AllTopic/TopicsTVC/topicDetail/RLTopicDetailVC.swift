@@ -29,12 +29,18 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //swift的字符串与OC有差别(String)
-        if  topicModel != nil && topicModel?.content_rendered.characters.count <= 0 {
+        initUI()
+        initData()
+        /*这里规则是
+         *检查数据是否完整,完整就直接显示帖子内容,不重新请求;不完整就发起网络请求,并更新内存缓存保存新的数据
+         *用户可以手动下拉刷新话题列表刷新或下拉刷新帖子刷新,需要更新缓存数据
+         */
+        if topicModel?.content_rendered == nil {
             loadingAIV.startAnimating()
             RLTopicsTool.shareRLTopicsTool().topicWithTopicID(topicModel?.ID, completion: {[weak self] (topic) in
                 if let strongSelf = self {
                     strongSelf.topicModel = topic
+                    strongSelf.initData()
                 }
             })
         }
@@ -61,26 +67,26 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
     
     func initData() {
         //导航栏标题
-        self.title = topicModel?.title
+        self.title = topicModel!.title
         //帖子内容
-        let htmlStr = NSString.HTMLstringWithBody(topicModel?.content_rendered)
+        let htmlStr = NSString.HTMLstringWithBody(topicModel!.content_rendered)
         contentWbV.loadHTMLString(htmlStr, baseURL: nil)
         //头像
-        let iconURL = NSURL.init(string: "https:\(topicModel?.member.avatar_normal)")
+        let iconURL = NSURL.init(string: "https:\(topicModel!.member.avatar_normal)")
         authorBtn.sd_setImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
         //标题
-        titleLable.text = topicModel?.title
+        titleLable.text = topicModel!.title
         titleLable.adjustsFontSizeToFitWidth = true//固定lable大小,内容自适应,还有个固定字体大小,lable自适应的方法sizeToFit
         //作者名称
-        authorLable.text = "\(topicModel?.member.username) ●"
+        authorLable.text = "\(topicModel!.member.username) ●"
         //创建时间
-        if topicModel?.createdTime.characters.count > 0 {
-            createdTimeLable.text = "\(topicModel?.createdTime) ●"
+        if topicModel!.createdTime != nil {
+            createdTimeLable.text = "\(topicModel!.createdTime) ●"
         } else {
-            createdTimeLable.text = NSString.creatTimeByTimeIntervalSince1970(Double((topicModel?.created)!)!)
+            createdTimeLable.text = NSString.creatTimeByTimeIntervalSince1970(Double((topicModel!.created)!)!)
         }
         //回复个数
-        replieNumLable.text = "\(topicModel?.replies)个回复"
+        replieNumLable.text = "\(topicModel!.replies)个回复"
     }
     
     func loadRepliesData() {
