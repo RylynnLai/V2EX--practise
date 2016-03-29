@@ -37,7 +37,7 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
          */
         if topicModel?.content_rendered == nil {
             loadingAIV.startAnimating()
-            RLTopicsTool.shareRLTopicsTool().topicWithTopicID(topicModel?.ID, completion: {[weak self] (topic) in
+            RLTopicsTool.shareTopicsTool.topicWithTopicID((topicModel?.ID)!, completion: {[weak self] (topic) in
                 if let strongSelf = self {
                     strongSelf.topicModel = topic
                     strongSelf.initData()

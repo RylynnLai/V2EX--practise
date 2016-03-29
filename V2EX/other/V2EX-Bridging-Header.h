@@ -10,6 +10,6 @@
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "RLNetWorkManager.h"
-#import "RLTopicsTool.h"
+
 #import "NSString+Extension.h"
 #import "UIButton+WebCache.h"

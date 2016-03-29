@@ -14,10 +14,24 @@ private let tipicesNumOfEachPage = 20
 
 class RLTopicsTVC: UITableViewController {
 
-    var recentBtn:UIButton?
-    var popBtn:UIButton?
+    private lazy var recentBtn:UIButton = {
+        let btn = UIButton.init(type: .System)
+        btn.frame = CGRectMake(0, 0, tagW * 0.5, 30)
+        btn.setTitle("最近", forState: .Normal)
+        btn.setBackgroundImage(UIImage.init(named: "tagBG"), forState: .Selected)
+        btn.addTarget(self, action: #selector(tagClick(_:)), forControlEvents: .TouchUpInside)
+        return btn
+    }()
+    private lazy var popBtn:UIButton = {
+        let btn = UIButton.init(type: .System)
+        btn.frame = CGRectMake(tagW * 0.5 - 1, 0, tagW * 0.5, 30)
+        btn.setTitle("最热", forState: .Normal)
+        btn.setBackgroundImage(UIImage.init(named: "tagBG"), forState: .Selected)
+        btn.addTarget(self, action: #selector(tagClick(_:)), forControlEvents: .TouchUpInside)
+        return btn
+    }()
     var currentPageIdx:NSInteger?//当前加载到的页码,20条话题一页(由服务器决定)
-    var pageSelected:Int?//最新or最热
+    var pageSelected:RLPageSelected = .RecentTopics//最新or最热
     /**保存数据模型数组*/
     private lazy var topics:NSMutableArray = {[]}()
     
@@ -42,17 +56,20 @@ class RLTopicsTVC: UITableViewController {
             static var onceToken : dispatch_once_t = 0
         }
         dispatch_once(&Static.onceToken) {
-            
+            [weak self] in
+            if let strongSelf = self {
+                strongSelf.tagClick(strongSelf.recentBtn)
+            }
         }
     }
     //MARK: - action方法
     func refreshData() {
-        RLTopicsTool.shareRLTopicsTool().currentPageIdx = 1
+        RLTopicsTool.shareTopicsTool.currentPageIdx = 1
         self.topics.removeAllObjects()
         loadData()
     }
     func loadMore() {
-        if pageSelected == 1 {
+        if pageSelected == .PopTopics {
             dispatch_async(dispatch_get_main_queue(), {
                 [weak self] in
                 if let strongSelf = self {
@@ -60,8 +77,8 @@ class RLTopicsTVC: UITableViewController {
                 }
             })
         }
-        let pageIdx = RLTopicsTool.shareRLTopicsTool().currentPageIdx 
-        RLTopicsTool.shareRLTopicsTool().currentPageIdx = pageIdx + 1
+        let pageIdx = RLTopicsTool.shareTopicsTool.currentPageIdx
+        RLTopicsTool.shareTopicsTool.currentPageIdx = pageIdx + 1
         loadData()
     }
     
@@ -71,26 +88,38 @@ class RLTopicsTVC: UITableViewController {
             footer.refreshingTitleHidden = true
             self.tableView.mj_footer = footer
             
-            recentBtn?.selected = true
-            popBtn?.selected = false
-            pageSelected = 0
+            recentBtn.selected = true
+            popBtn.selected = false
+            pageSelected = .RecentTopics
         } else {
             self.tableView.mj_footer = nil
-            popBtn?.selected = true
-            recentBtn?.selected = false
-            pageSelected = 1
+            popBtn.selected = true
+            recentBtn.selected = false
+            pageSelected = .PopTopics
         }
         self.tableView.mj_header.beginRefreshing()
     }
     //MARK: - 私有方法
     func loadData() {
-        RLTopicsTool.shareRLTopicsTool().topicsWithCompletion({ [weak self]  (topics) in
+        RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
             if let strongSelf = self {
-                strongSelf.topics = topics
+                strongSelf.topics = NSMutableArray.init(array: topics)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    strongSelf.tableView.reloadData()
+                    strongSelf.tableView.mj_header.endRefreshing()
+                    strongSelf.tableView.mj_footer.endRefreshing()
+                })
             }
-            
-            
-            }, option: nil)
+            }, option: pageSelected)
+    }
+    
+    func initUI() {
+        let tagView = UIView.init(frame: CGRectMake(0, 0, tagW, 30))
+        tagView.layer.cornerRadius = 10;
+        tagView.layer.masksToBounds = true;
+        tagView.layer.borderWidth = 1;
+//        tagView.layer.borderColor = V2EXGray.CGColor;
+        
     }
 
     // MARK: - Table view data source
@@ -104,60 +133,5 @@ class RLTopicsTVC: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

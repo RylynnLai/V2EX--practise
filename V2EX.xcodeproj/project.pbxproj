@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
 		0E4F8AEC1CA3947400DA9E84 /* RLNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */; };
+		0E6A00B31CAA1F9100BF50AF /* RLTopicsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */; };
 		0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */; };
 		0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */; };
 		0E7C73BA1CA90BA600A95E73 /* RLReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7C73B91CA90BA600A95E73 /* RLReplyCell.swift */; };
@@ -16,7 +17,6 @@
 		0E9A1B111CA3EBF000346D56 /* RLTopicDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A1B101CA3EBF000346D56 /* RLTopicDetailVC.swift */; };
 		1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9431C4778920089F1A7 /* RLBubblesView.swift */; };
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
-		1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */; };
 		1C6343DC1C3B717B000301FA /* RLMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343D71C3B717B000301FA /* RLMember.m */; };
 		1C6343DD1C3B717B000301FA /* RLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343D91C3B717B000301FA /* RLNode.m */; };
 		1C6343DE1C3B717B000301FA /* RLTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6343DB1C3B717B000301FA /* RLTopic.m */; };
@@ -34,7 +34,6 @@
 		1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A27E1C39FFF700B954C2 /* Foundation+Log.m */; };
 		1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */; };
 		1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */; };
-		1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */; };
 		1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */; };
 		1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */ = {isa = PBXBuildFile; fileRef = F8580AB31C9465CD00FCB034 /* RLTopicReply.m */; };
 		1CEB12BB1C966DB400A1B651 /* RLReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CEB12B91C966D9A00A1B651 /* RLReplyCell.xib */; };
@@ -42,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesVC.swift; sourceTree = "<group>"; };
+		0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicsTool.swift; sourceTree = "<group>"; };
 		0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		0E73E7111C97F22100D5203B /* RLNodesHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesHeadView.swift; sourceTree = "<group>"; };
 		0E7C73B91CA90BA600A95E73 /* RLReplyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLReplyCell.swift; sourceTree = "<group>"; };
@@ -50,8 +50,6 @@
 		0E9A1B101CA3EBF000346D56 /* RLTopicDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicDetailVC.swift; sourceTree = "<group>"; };
 		1C56B9431C4778920089F1A7 /* RLBubblesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLBubblesView.swift; sourceTree = "<group>"; };
 		1C56B9451C4780890089F1A7 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTool.h; sourceTree = "<group>"; };
-		1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicsTool.m; sourceTree = "<group>"; };
 		1C5F83D41C33D9E9007767E6 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		1C6343D61C3B717B000301FA /* RLMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMember.h; sourceTree = "<group>"; };
 		1C6343D71C3B717B000301FA /* RLMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMember.m; sourceTree = "<group>"; };
@@ -81,8 +79,6 @@
 		1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicCell.h; sourceTree = "<group>"; };
 		1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicCell.m; sourceTree = "<group>"; };
 		1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicCell.xib; sourceTree = "<group>"; };
-		1C97A2841C3A6FD700B954C2 /* RLTopicsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicsTVC.h; sourceTree = "<group>"; };
-		1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicsTVC.m; sourceTree = "<group>"; };
 		1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLTopicDetailVC.xib; sourceTree = "<group>"; };
 		1CEB12B91C966D9A00A1B651 /* RLReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RLReplyCell.xib; sourceTree = "<group>"; };
 		1CF13A031C1EB27E00674513 /* V2EX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2EX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,10 +125,9 @@
 				1C6343D91C3B717B000301FA /* RLNode.m */,
 				1C6343DA1C3B717B000301FA /* RLTopic.h */,
 				1C6343DB1C3B717B000301FA /* RLTopic.m */,
-				1C58CBAB1C3E01A00077B701 /* RLTopicsTool.h */,
-				1C58CBAC1C3E01A00077B701 /* RLTopicsTool.m */,
 				F8580AB21C9465CD00FCB034 /* RLTopicReply.h */,
 				F8580AB31C9465CD00FCB034 /* RLTopicReply.m */,
+				0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,8 +206,6 @@
 				1C97A2811C3A6FD700B954C2 /* RLTopicCell.h */,
 				1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */,
 				1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */,
-				1C97A2841C3A6FD700B954C2 /* RLTopicsTVC.h */,
-				1C97A2851C3A6FD700B954C2 /* RLTopicsTVC.m */,
 				0E7C73BB1CA90DDF00A95E73 /* RLTopicsTVC.swift */,
 				1C97A2861C3A6FD700B954C2 /* topicDetail */,
 			);
@@ -401,9 +394,9 @@
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C680F631C327D34007A2C19 /* NSString+Extension.m in Sources */,
 				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
+				0E6A00B31CAA1F9100BF50AF /* RLTopicsTool.swift in Sources */,
 				1C6343DE1C3B717B000301FA /* RLTopic.m in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
-				1C58CBAD1C3E01A00077B701 /* RLTopicsTool.m in Sources */,
 				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				0E7C73BC1CA90DDF00A95E73 /* RLTopicsTVC.swift in Sources */,
 				1C6343DD1C3B717B000301FA /* RLNode.m in Sources */,
@@ -413,7 +406,6 @@
 				1C97A27F1C39FFF700B954C2 /* Foundation+Log.m in Sources */,
 				0E9A1B111CA3EBF000346D56 /* RLTopicDetailVC.swift in Sources */,
 				1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */,
-				1C97A28C1C3A6FD700B954C2 /* RLTopicsTVC.m in Sources */,
 				1C56B9441C4778920089F1A7 /* RLBubblesView.swift in Sources */,
 				1C6343DC1C3B717B000301FA /* RLMember.m in Sources */,
 			);
