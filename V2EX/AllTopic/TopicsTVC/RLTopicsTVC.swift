@@ -9,7 +9,7 @@
 import UIKit
 
 //用全局变量代替宏定义
-private let tagW = UIScreen.mainScreen().bounds.width * 0.4
+private let tagW = screenW * 0.4
 private let tipicesNumOfEachPage = 20
 
 class RLTopicsTVC: UITableViewController {
@@ -40,7 +40,8 @@ class RLTopicsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initUI()
+        
         self.tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: Selector(refreshData()))
         let footer = MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadMore()))
         footer.refreshingTitleHidden = true
@@ -115,23 +116,66 @@ class RLTopicsTVC: UITableViewController {
     
     func initUI() {
         let tagView = UIView.init(frame: CGRectMake(0, 0, tagW, 30))
-        tagView.layer.cornerRadius = 10;
-        tagView.layer.masksToBounds = true;
-        tagView.layer.borderWidth = 1;
-//        tagView.layer.borderColor = V2EXGray.CGColor;
+        tagView.layer.cornerRadius = 10
+        tagView.layer.masksToBounds = true
+        tagView.layer.borderWidth = 1
+        tagView.layer.borderColor = V2EXGray.CGColor
+        tagView.tintColor = V2EXGray
+        tagView.addSubview(recentBtn)
+        tagView.addSubview(popBtn)
+        self.navigationItem.titleView = tagView
         
+        //设置返回按钮
+        let backBarButtonItem = UIBarButtonItem.init()
+        backBarButtonItem.title = ""
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return topics.count ?? 0//假如不存在则返回0
     }
-
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:RLTopicCell? = tableView.dequeueReusableCellWithIdentifier("topicCell") as? RLTopicCell
+        if cell == nil {
+            cell = RLTopicCell.instantiateFromNib() as? RLTopicCell
+        }
+        
+        cell?.topicModel = topics[indexPath.row] as! RLTopic
+        return cell!
+    }
+    //MARK: -UITableViewDelegate
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if topics[indexPath.row].content != nil {
+            return 130
+        } else {
+            return 105
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let topicDetallVC = RLTopicDetailVC.init(nibName: "RLTopicDetailVC", bundle: nil)
+        topicDetallVC.topicModel = topics[indexPath.row] as? RLTopic
+        
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(topicDetallVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
+    }
+    
+    //MARK: -UIScrollViewDelegate
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if self.navigationController?.topViewController == self {
+            let navBar = self.navigationController?.navigationBar
+            if scrollView.contentOffset.y > 0 && navBar?.mj_y == 20 {
+                UIView.animateWithDuration(0.5, animations: { 
+                    navBar?.mj_y = -(navBar?.mj_h)!
+                })
+            } else if scrollView.contentOffset.y < 0 && navBar?.mj_y < 0 {
+                UIView.animateWithDuration(0.5, animations: {
+                    navBar?.mj_y = 20.0
+                })
+            }
+        }
+    }
 }

@@ -47,6 +47,7 @@ public extension UIView {
         }
     }
     // MARK: - 从xib加载view
+    //这里的class修饰词作用是修饰类方法
     public class func instantiateFromNib() -> UIView {
         return NSBundle.mainBundle().loadNibNamed(String(self), owner: nil, options: nil).first as! UIView
     }

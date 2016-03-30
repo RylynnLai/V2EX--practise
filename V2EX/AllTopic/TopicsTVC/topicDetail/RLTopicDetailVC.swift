@@ -20,7 +20,7 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
     @IBOutlet weak var replieNumLable: UILabel!
     
     private lazy var contentWbV:UIWebView = {
-        let wv:UIWebView = UIWebView.init(frame: CGRectMake(0, self.authorLable.mj_h + self.authorLable.mj_y, UIScreen.mainScreen().bounds.width, 10))
+        let wv:UIWebView = UIWebView.init(frame: CGRectMake(0, self.authorLable.mj_h + self.authorLable.mj_y, screenW, 10))
         wv.delegate = self
         return wv
     }()
@@ -58,18 +58,18 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
 
     
     //MARK: -私有方法
-    func initUI() {
+    private func initUI() {
         self.view.addSubview(self.contentWbV)
         loadingAIV.frame = CGRectMake(self.view.mj_w * 0.5, self.view.mj_h * 0.5, 20, 20)
         loadingAIV.activityIndicatorViewStyle = .Gray
         loadingAIV.hidesWhenStopped = true
     }
     
-    func initData() {
+    private func initData() {
         //导航栏标题
         self.title = topicModel!.title
         //帖子内容
-        let htmlStr = NSString.HTMLstringWithBody(topicModel!.content_rendered)
+        let htmlStr = String.HTMLstringWithBody(topicModel!.content_rendered ?? "")
         contentWbV.loadHTMLString(htmlStr, baseURL: nil)
         //头像
         let iconURL = NSURL.init(string: "https:\(topicModel!.member.avatar_normal)")
@@ -83,17 +83,17 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
         if topicModel!.createdTime != nil {
             createdTimeLable.text = "\(topicModel!.createdTime) ●"
         } else {
-            createdTimeLable.text = NSString.creatTimeByTimeIntervalSince1970(Double((topicModel!.created)!)!)
+            createdTimeLable.text = String.creatTimeByTimeIntervalSince1970(Double((topicModel!.created)!)!)
         }
         //回复个数
         replieNumLable.text = "\(topicModel!.replies)个回复"
     }
     
-    func loadRepliesData() {
+    private func loadRepliesData() {
         
     }
     
-    func addRepliesList()  {
+    private func addRepliesList()  {
         
     }
     //MARK: - UIWebViewDelegate
