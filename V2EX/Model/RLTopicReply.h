@@ -21,7 +21,7 @@
 //"last_modified" : 1451371537
 
 #import <Foundation/Foundation.h>
-#import "RLMember.h"
+@class RLMember;
 @interface RLTopicReply : NSObject
 
 @property (nonatomic, strong) NSString *ID;

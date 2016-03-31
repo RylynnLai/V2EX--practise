@@ -7,7 +7,6 @@
 //
 
 #import "RLTopicCell.h"
-#import "RLTopic.h"
 
 @interface RLTopicCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nodeLable;

@@ -36,8 +36,6 @@ class RLTopicsTVC: UITableViewController {
     private lazy var topics:NSMutableArray = {[]}()
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -105,6 +103,7 @@ class RLTopicsTVC: UITableViewController {
         RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
             if let strongSelf = self {
                 strongSelf.topics = NSMutableArray.init(array: topics)
+                //在主线程刷新UI
                 dispatch_async(dispatch_get_main_queue(), { 
                     strongSelf.tableView.reloadData()
                     strongSelf.tableView.mj_header.endRefreshing()
@@ -147,11 +146,12 @@ class RLTopicsTVC: UITableViewController {
     }
     //MARK: -UITableViewDelegate
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if topics[indexPath.row].content != nil {
+        if pageSelected == .RecentTopics{
             return 130
-        } else {
+        } else if pageSelected == .PopTopics {
             return 105
         }
+        return 0
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

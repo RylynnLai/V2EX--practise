@@ -47,16 +47,15 @@ class RLNodesVC: UIViewController {
             let allNodes = RLNode.mj_objectArrayWithKeyValuesArray(response)
             var nodeModels:[RLNode] = []
             for node in allNodes {
-                if Int(node.topics) > 100 {
+                let tempNode = node as! RLNode
+                if Int(tempNode.topics!)! > 100 {
                 nodeModels.append(node as! RLNode)
                 }
             }
             if let strongSelf = self {
                 strongSelf.bubblesView.nodeModels = nodeModels
             }
-            }, failure:{
-                
-        })
+            }, failure:{})
     }
 
 }
