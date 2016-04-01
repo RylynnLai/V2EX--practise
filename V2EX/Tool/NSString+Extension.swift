@@ -29,11 +29,11 @@ public extension String {
         
         var timeStr:String?
         if sec > 0 && sec < 60 * 60 {//1分钟~60分钟
-            timeStr = "\((sec + 30) / 60)分钟前 ●"
+            timeStr = "\(Int((sec + 30) / 60))分钟前 ●"
         } else if sec >= 60 * 60 && sec < 60 * 60 * 24 {//1小时~24小时
-            timeStr = "\((sec / 60 + 30) / 60)小时前 ●"
+            timeStr = "\(Int((sec / 60 + 30) / 60))小时前 ●"
         } else if sec >= 60 * 60 * 24 {//天
-            timeStr = "\((sec / 60 / 60 + 12) / 24)天前 ●"
+            timeStr = "\(Int((sec / 60 / 60 + 12) / 24))天前 ●"
         }
         return timeStr!
     }

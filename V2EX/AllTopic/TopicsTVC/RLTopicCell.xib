@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -106,14 +106,14 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="authorBtn" destination="nIZ-AC-ztN" id="uOY-eP-NUr"/>
-                <outlet property="contentLable" destination="DXU-58-oUq" id="CC4-mX-aYM"/>
-                <outlet property="createdTime" destination="xLw-5n-8cw" id="bP7-vB-dab"/>
-                <outlet property="nodeLable" destination="azc-IS-Sa3" id="NEa-kN-ZRd"/>
-                <outlet property="replieNumLable" destination="glr-dN-3Dd" id="t1g-Zu-hR0"/>
-                <outlet property="titleLable" destination="f3i-JT-6YV" id="N67-3Y-5oV"/>
+                <outlet property="authorBtn" destination="nIZ-AC-ztN" id="d5E-g1-grc"/>
+                <outlet property="contentLable" destination="DXU-58-oUq" id="nMy-Xp-YXk"/>
+                <outlet property="createdTime" destination="xLw-5n-8cw" id="HWh-3e-GG0"/>
+                <outlet property="nodeLable" destination="azc-IS-Sa3" id="1JV-G0-4f9"/>
+                <outlet property="replieNumLable" destination="glr-dN-3Dd" id="Aio-O8-RfM"/>
+                <outlet property="titleLable" destination="f3i-JT-6YV" id="e74-ta-VqI"/>
             </connections>
-            <point key="canvasLocation" x="526" y="426"/>
+            <point key="canvasLocation" x="456" y="416"/>
         </tableViewCell>
     </objects>
 </document>

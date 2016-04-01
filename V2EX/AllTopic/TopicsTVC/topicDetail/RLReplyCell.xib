@@ -30,8 +30,8 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1234分前  ♥2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTC-fE-yUt">
-                        <rect key="frame" x="126" y="10" width="155" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234分前  ♥2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTC-fE-yUt">
+                        <rect key="frame" x="126" y="10" width="113" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="992-RZ-Tqr"/>
                         </constraints>

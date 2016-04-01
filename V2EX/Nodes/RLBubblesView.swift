@@ -16,7 +16,7 @@ import QuartzCore
 class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
     // MARk:setter方法
-    var nodeModels:NSArray? {
+    var nodeModels:NSSet? {
         didSet{
             let gutter:CGFloat = 20
             let gap:CGFloat = 5
@@ -30,18 +30,13 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             var yValue = gutter
             var rowNumber = 1
             
-            var nodeModel:RLNode
-            
-//            for var zz = 0; zz < nodeModels!.count; zz += 1 
-            for zz in 0 ..< nodeModels!.count {
-                nodeModel = nodeModels![zz] as! RLNode
-                
+            for nodeModel in nodeModels! {
                 let nodeBtn = RLNodeBtn(type:.Custom)
-                nodeBtn.nodeModel = nodeModels![zz] as? RLNode
+                nodeBtn.nodeModel = (nodeModel as! RLNode)
                 nodeBtn.frame = CGRectMake(xValue, yValue, 60, 60);
-                nodeBtn.setTitle(nodeModel.title, forState:UIControlState.Normal)
+                nodeBtn.setTitle((nodeModel as! RLNode).title, forState:UIControlState.Normal)
                 
-//                [self addNodeBtnToScrollView:nodeBtn];
+                //                [self addNodeBtnToScrollView:nodeBtn];
                 self.addSubview(nodeBtn)
                 nodesBtnArray.addObject(nodeBtn)
                 

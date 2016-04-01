@@ -86,11 +86,11 @@ class RLNodeTopicsTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("nodeTopicCell")
         if cell == nil {
-        cell = RLTopicCell.instantiateFromNib() as! RLTopicCell
+        cell = (RLTopicCell.instantiateFromNib() as! UITableViewCell)
         }
         if topics.count > 0 {
             let topicCell:RLTopicCell = cell as! RLTopicCell
-            topicCell.topicModel = self.topics[indexPath.row] as! RLTopic
+            topicCell.topicModel = (self.topics[indexPath.row] as! RLTopic)
         }
         return cell!
     }

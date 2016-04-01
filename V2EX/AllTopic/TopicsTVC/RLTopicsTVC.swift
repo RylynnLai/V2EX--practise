@@ -141,7 +141,7 @@ class RLTopicsTVC: UITableViewController {
             cell = RLTopicCell.instantiateFromNib() as? RLTopicCell
         }
         
-        cell?.topicModel = topics[indexPath.row] as! RLTopic
+        cell?.topicModel = (topics[indexPath.row] as! RLTopic)
         return cell!
     }
     //MARK: -UITableViewDelegate

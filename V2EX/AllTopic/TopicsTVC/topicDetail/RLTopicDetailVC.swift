@@ -72,21 +72,21 @@ class RLTopicDetailVC: UIViewController, UIWebViewDelegate, UITableViewDelegate,
         let htmlStr = String.HTMLstringWithBody(topicModel!.content_rendered ?? "")
         contentWbV.loadHTMLString(htmlStr, baseURL: nil)
         //头像
-        let iconURL = NSURL.init(string: "https:\(topicModel!.member.avatar_normal)")
+        let iconURL = NSURL.init(string: "https:\(topicModel!.member.avatar_normal!)")
         authorBtn.sd_setImageWithURL(iconURL, forState: .Normal, placeholderImage: UIImage.init(named: "blank"))
         //标题
         titleLable.text = topicModel!.title
         titleLable.adjustsFontSizeToFitWidth = true//固定lable大小,内容自适应,还有个固定字体大小,lable自适应的方法sizeToFit
         //作者名称
-        authorLable.text = "\(topicModel!.member.username) ●"
+        authorLable.text = "\(topicModel!.member.username!) ●"
         //创建时间
         if topicModel!.createdTime != nil {
-            createdTimeLable.text = "\(topicModel!.createdTime) ●"
+            createdTimeLable.text = "\(topicModel!.createdTime!) ●"
         } else {
-            createdTimeLable.text = String.creatTimeByTimeIntervalSince1970(Double((topicModel!.created)!)!)
+            createdTimeLable.text = String.creatTimeByTimeIntervalSince1970(Double(topicModel!.created!)!)
         }
         //回复个数
-        replieNumLable.text = "\(topicModel!.replies)个回复"
+        replieNumLable.text = "\(topicModel!.replies!)个回复"
     }
     
     private func loadRepliesData() {

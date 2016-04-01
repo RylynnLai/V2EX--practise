@@ -45,11 +45,10 @@ class RLNodesVC: UIViewController {
     private func loadData()  {
         RLNetWorkManager.shareRLNetWorkManager().requestWithPath("/api/nodes/all.json", success: {[weak self] (response) in
             let allNodes = RLNode.mj_objectArrayWithKeyValuesArray(response)
-            var nodeModels:[RLNode] = []
-            for node in allNodes {
-                let tempNode = node as! RLNode
-                if Int(tempNode.topics!)! > 100 {
-                nodeModels.append(node as! RLNode)
+            let nodeModels:NSMutableSet = NSMutableSet.init(array: allNodes as [AnyObject])
+            for node in nodeModels{
+                if Int((node as! RLNode).topics!)! < 100 {//话题数目少于100条的不显示
+                    nodeModels.removeObject(node)
                 }
             }
             if let strongSelf = self {
