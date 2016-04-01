@@ -12,6 +12,7 @@
 		0E4F8AEC1CA3947400DA9E84 /* RLNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */; };
 		0E5302181CAB64AB0050F2F8 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5302171CAB64AB0050F2F8 /* NSString+Extension.swift */; };
 		0E53021E1CAB9D7C0050F2F8 /* RLDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53021D1CAB9D7C0050F2F8 /* RLDefine.swift */; };
+		0E59618E1CAE1766007B11DD /* RLTopicReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E59618D1CAE1766007B11DD /* RLTopicReply.swift */; };
 		0E6A00B31CAA1F9100BF50AF /* RLTopicsTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */; };
 		0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */; };
 		0E6C1EE71CACCB300064CAC8 /* RLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C1EE61CACCB300064CAC8 /* RLNode.swift */; };
@@ -36,7 +37,6 @@
 		1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97A2821C3A6FD700B954C2 /* RLTopicCell.m */; };
 		1C97A28B1C3A6FD700B954C2 /* RLTopicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2831C3A6FD700B954C2 /* RLTopicCell.xib */; };
 		1C97A28E1C3A6FD700B954C2 /* RLTopicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C97A2891C3A6FD700B954C2 /* RLTopicDetailVC.xib */; };
-		1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */ = {isa = PBXBuildFile; fileRef = F8580AB31C9465CD00FCB034 /* RLTopicReply.m */; };
 		1CEB12BB1C966DB400A1B651 /* RLReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CEB12B91C966D9A00A1B651 /* RLReplyCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +45,7 @@
 		0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesVC.swift; sourceTree = "<group>"; };
 		0E5302171CAB64AB0050F2F8 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		0E53021D1CAB9D7C0050F2F8 /* RLDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLDefine.swift; sourceTree = "<group>"; };
+		0E59618D1CAE1766007B11DD /* RLTopicReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicReply.swift; sourceTree = "<group>"; };
 		0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopicsTool.swift; sourceTree = "<group>"; };
 		0E6A1DA11CA22A5D00845CC5 /* RLNodeTopicsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodeTopicsTVC.swift; sourceTree = "<group>"; };
 		0E6C1EE61CACCB300064CAC8 /* RLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNode.swift; sourceTree = "<group>"; };
@@ -83,8 +84,6 @@
 		7FB87AC68CA2C45BE124BA30 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		920F8A219D83A1242B0A01BE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0F29BE591A3865F293C4B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F8580AB21C9465CD00FCB034 /* RLTopicReply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTopicReply.h; sourceTree = "<group>"; };
-		F8580AB31C9465CD00FCB034 /* RLTopicReply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTopicReply.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +119,7 @@
 				0E6C1EE81CACD6480064CAC8 /* RLMember.swift */,
 				0E6C1EE61CACCB300064CAC8 /* RLNode.swift */,
 				0E4AF2571CACFE87002BC739 /* RLTopic.swift */,
-				F8580AB21C9465CD00FCB034 /* RLTopicReply.h */,
-				F8580AB31C9465CD00FCB034 /* RLTopicReply.m */,
+				0E59618D1CAE1766007B11DD /* RLTopicReply.swift */,
 				0E6A00B21CAA1F9100BF50AF /* RLTopicsTool.swift */,
 			);
 			path = Model;
@@ -384,12 +382,12 @@
 			files = (
 				0E7C73BA1CA90BA600A95E73 /* RLReplyCell.swift in Sources */,
 				0E6C1EE91CACD6480064CAC8 /* RLMember.swift in Sources */,
-				1CEB12B61C966CAF00A1B651 /* RLTopicReply.m in Sources */,
 				0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */,
 				0E5302181CAB64AB0050F2F8 /* NSString+Extension.swift in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
 				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				1C97A28A1C3A6FD700B954C2 /* RLTopicCell.m in Sources */,
+				0E59618E1CAE1766007B11DD /* RLTopicReply.swift in Sources */,
 				0E6A00B31CAA1F9100BF50AF /* RLTopicsTool.swift in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				0E6C1EE71CACCB300064CAC8 /* RLNode.swift in Sources */,

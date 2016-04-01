@@ -38,40 +38,42 @@ class RLTopic: NSObject {
             var rangEnd = (tempStr as NSString).rangeOfString("\" class=\"avatar\"")
             topic.member.avatar_normal = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("class=\"item_title\"><a href=\"/t/")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("class=\"item_title\"><a href=\"/t/")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("#")
             topic.ID = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("reply")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("reply")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("\">")
-            topic.replies? = (tempStr as NSString).substringToIndex(rangEnd.location)
+            topic.replies = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("\">")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("\">")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("</a>")
-            topic.title? = (tempStr as NSString).substringToIndex(rangEnd.location)
+            topic.title = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("class=\"node\" href=\"/go/")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("class=\"node\" href=\"/go/")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("\">")
             topic.node.name = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("\">")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("\">")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("</a>")
             topic.node.title = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("href=\"/member/")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("href=\"/member/")
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("\">")
             topic.member.username = (tempStr as NSString).substringToIndex(rangEnd.location)
             
-            rangeStart = (str as! NSString).rangeOfString("</strong> &nbsp;•&nbsp;")
-            tempStr = (str as! NSString).substringFromIndex(rangeStart.location + rangeStart.length)
+            rangeStart = (tempStr as NSString).rangeOfString("</strong> &nbsp;•&nbsp;")
+            if rangeStart.location == NSNotFound {continue}
+            tempStr = (tempStr as NSString).substringFromIndex(rangeStart.location + rangeStart.length)
             rangEnd = (tempStr as NSString).rangeOfString("&nbsp;•&nbsp;")
-            topic.createdTime? = (tempStr as NSString).substringToIndex(rangEnd.location)
+            if rangEnd.location == NSNotFound {rangEnd = (tempStr as NSString).rangeOfString("</span>")}
+            topic.createdTime = (tempStr as NSString).substringToIndex(rangEnd.location)
             
             topics.addObject(topic)
         }
