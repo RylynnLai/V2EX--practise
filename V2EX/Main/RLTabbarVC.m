@@ -7,8 +7,7 @@
 //
 
 #import "RLTabbarVC.h"
-#import "RLTopicsTVC.h"
-#import "RLNodesVC.h"
+
 
 @interface RLTabbarVC ()
 

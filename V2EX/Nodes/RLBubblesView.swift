@@ -16,7 +16,7 @@ import QuartzCore
 class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
     // MARk:setter方法
-    var nodeModels:NSArray? {
+    var nodeModels:NSSet? {
         didSet{
             let gutter:CGFloat = 20
             let gap:CGFloat = 5
@@ -30,22 +30,17 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             var yValue = gutter
             var rowNumber = 1
             
-            var nodeModel:RLNode
-            
-//            for var zz = 0; zz < nodeModels!.count; zz += 1 
-            for zz in 0 ..< nodeModels!.count {
-                nodeModel = nodeModels![zz] as! RLNode
-                
+            for nodeModel in nodeModels! {
                 let nodeBtn = RLNodeBtn(type:.Custom)
-                nodeBtn.nodeModel = nodeModels![zz] as? RLNode
+                nodeBtn.nodeModel = (nodeModel as! RLNode)
                 nodeBtn.frame = CGRectMake(xValue, yValue, 60, 60);
-                nodeBtn.setTitle(nodeModel.title, forState:UIControlState.Normal)
+                nodeBtn.setTitle((nodeModel as! RLNode).title, forState:UIControlState.Normal)
                 
-//                [self addNodeBtnToScrollView:nodeBtn];
+                //                [self addNodeBtnToScrollView:nodeBtn];
                 self.addSubview(nodeBtn)
                 nodesBtnArray.addObject(nodeBtn)
                 
-                nodeBtn.addTarget(self, action: #selector(RLBubblesView.nodeBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                nodeBtn.addTarget(self, action: Selector("nodeBtnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
                 
                 xValue += (60 + gap);
                 
@@ -87,7 +82,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
     
     // 声明一个闭包（空），由外部定义，本类调用
-    var nodeBtnAction:(nodeModel:RLNode) -> () = {_ in }
+    var nodeBtnAction:(nodeModel:RLNode) -> Void = {_ in }
     // MARK: init
     override init(frame: CGRect) {
         bigSize = CGSizeMake(60, 60)
@@ -101,7 +96,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func nodeBtnClick(button:RLNodeBtn) {
+    private func nodeBtnClick(button:RLNodeBtn) {
         nodeBtnAction(nodeModel: button.nodeModel!)
     }
     
