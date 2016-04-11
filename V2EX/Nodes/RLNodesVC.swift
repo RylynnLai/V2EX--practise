@@ -43,7 +43,7 @@ class RLNodesVC: UIViewController {
     }
 
     private func loadData()  {
-        RLNetWorkManager.shareRLNetWorkManager().requestWithPath("/api/nodes/all.json", success: {[weak self] (response) in
+        RLNetWorkManager.defaultNetWorkManager.requestWithPath("/api/nodes/all.json", success: {[weak self] (response) in
             let allNodes = RLNode.mj_objectArrayWithKeyValuesArray(response)
             let nodeModels:NSMutableSet = NSMutableSet.init(array: allNodes as [AnyObject])
             for node in nodeModels{

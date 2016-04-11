@@ -24,7 +24,7 @@ class RLTopicsTool: NSObject {
     //根据话题ID获取数据
     func topicWithTopicID(ID:String, completion:(topic:RLTopic) -> Void) {
         let path = "/api/topics/show.json?id=\(ID)"
-        RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { (response) in
+        RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { (response) in
             let topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
             completion(topic: topics.firstObject as! RLTopic)
             } , failure:{})
@@ -36,7 +36,7 @@ class RLTopicsTool: NSObject {
                 topics.removeAllObjects()
             }
             let path = "/recent?p=\(currentPageIdx)"
-            RLNetWorkManager.shareRLNetWorkManager().requestHTMLWithPath(path, callBackBlock: { [weak self] (resArr) in
+            RLNetWorkManager.defaultNetWorkManager.requestHTMLWithPath(path, callBack: { [weak self] (resArr) in
                 if let strongSelf = self {
                     let tempArr = RLTopic.parserHTMLStrs(resArr)
                     for topic in tempArr {
@@ -47,7 +47,7 @@ class RLTopicsTool: NSObject {
             })
         } else if option == .PopTopics {
             let path = "/api/topics/hot.json"
-            RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { [weak self] (response) in
+            RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { [weak self] (response) in
                 if let strongSelf = self {
                     strongSelf.topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
                     completion(topics: strongSelf.topics)
@@ -58,7 +58,7 @@ class RLTopicsTool: NSObject {
     //根据话题ID获得评论
     func topicRepliesWithTopicID(ID:String, completion:(replies:NSArray) -> Void) {
      let path = "/api/replies/show.json?topic_id=\(ID)"
-        RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { (response) in
+        RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { (response) in
             let repliesItem = RLTopicReply.mj_objectArrayWithKeyValuesArray(response)
             completion(replies: repliesItem)
             }, failure:{})

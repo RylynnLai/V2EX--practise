@@ -19,7 +19,7 @@ class RLNetWorkManager: NSObject {
         return AFHTTPSessionManager()
     }()
     
-    static let DefaultNetWorkManager = RLNetWorkManager()//单例
+    static let defaultNetWorkManager = RLNetWorkManager()//单例
     private override init() {}//防止外部用init（）或者（）来初始化这个单例
     //获取节点话题列表
     func requestNodeTopicssWithID(nodeID:String, success:successBlock, failure:errorBlock) -> NSURLSessionDataTask {

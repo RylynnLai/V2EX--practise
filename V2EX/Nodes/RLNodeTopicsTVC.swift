@@ -46,7 +46,7 @@ class RLNodeTopicsTVC: UITableViewController {
         self.headView.nodeModel = nodeModel
         //获取完整的节点数据
         let path = "/api/nodes/show.json?id=\(nodeModel!.ID)"
-        RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { [weak self] (response) -> Void in
+        RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { [weak self] (response) -> Void in
             if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
                 strongSelf.nodeModel = RLNode.mj_objectWithKeyValues(response)
                 strongSelf.headView.nodeModel = strongSelf.nodeModel
@@ -58,7 +58,7 @@ class RLNodeTopicsTVC: UITableViewController {
     //下拉刷新
     func refreshData() {
         if nodeModel != nil {
-            RLNetWorkManager.shareRLNetWorkManager().requestNodeTopicssWithID(nodeModel?.ID, success: { [weak self] (response) -> Void in
+            RLNetWorkManager.defaultNetWorkManager.requestNodeTopicssWithID(nodeModel!.ID!, success: { [weak self] (response) -> Void in
                 if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
                     strongSelf.topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
                     strongSelf.tableView.mj_header.endRefreshing()
