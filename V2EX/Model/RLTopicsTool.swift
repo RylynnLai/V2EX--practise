@@ -50,6 +50,7 @@ class RLTopicsTool: NSObject {
             RLNetWorkManager.shareRLNetWorkManager().requestWithPath(path, success: { [weak self] (response) in
                 if let strongSelf = self {
                     strongSelf.topics = RLTopic.mj_objectArrayWithKeyValuesArray(response)
+                    completion(topics: strongSelf.topics)
                 }
                 }, failure: {})
         }

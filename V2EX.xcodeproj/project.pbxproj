@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		046911910817FAC6DC24598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 920F8A219D83A1242B0A01BE /* libPods.a */; };
+		0E0B1A7B1CBB550F00EE1D05 /* RLTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B1A7A1CBB550F00EE1D05 /* RLTabbarVC.swift */; };
+		0E0B1A7D1CBB759600EE1D05 /* RLNetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B1A7C1CBB759600EE1D05 /* RLNetWorkManager.swift */; };
 		0E4AF2581CACFE87002BC739 /* RLTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AF2571CACFE87002BC739 /* RLTopic.swift */; };
 		0E4F8AEC1CA3947400DA9E84 /* RLNodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */; };
 		0E5302181CAB64AB0050F2F8 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5302171CAB64AB0050F2F8 /* NSString+Extension.swift */; };
@@ -26,8 +28,6 @@
 		1C56B9461C4780890089F1A7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56B9451C4780890089F1A7 /* UIView+Extension.swift */; };
 		1C680F3C1C3271F2007A2C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1C1C3271F2007A2C19 /* Assets.xcassets */; };
 		1C680F3D1C3271F2007A2C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C680F1D1C3271F2007A2C19 /* LaunchScreen.storyboard */; };
-		1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F221C3271F2007A2C19 /* RLTabbarVC.m */; };
-		1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F2D1C3271F2007A2C19 /* RLNetWorkManager.m */; };
 		1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F301C3271F2007A2C19 /* AppDelegate.m */; };
 		1C680F461C3271F2007A2C19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C680F311C3271F2007A2C19 /* main.m */; };
 		1C6B78171C433E380020A633 /* RLNodesHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C6B78161C433E380020A633 /* RLNodesHeadView.xib */; };
@@ -41,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0B1A7A1CBB550F00EE1D05 /* RLTabbarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTabbarVC.swift; sourceTree = "<group>"; };
+		0E0B1A7C1CBB759600EE1D05 /* RLNetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNetWorkManager.swift; sourceTree = "<group>"; };
 		0E4AF2571CACFE87002BC739 /* RLTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLTopic.swift; sourceTree = "<group>"; };
 		0E4F8AEB1CA3947400DA9E84 /* RLNodesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLNodesVC.swift; sourceTree = "<group>"; };
 		0E5302171CAB64AB0050F2F8 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
@@ -62,10 +64,6 @@
 		1C680F1C1C3271F2007A2C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C680F1E1C3271F2007A2C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C680F1F1C3271F2007A2C19 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C680F211C3271F2007A2C19 /* RLTabbarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTabbarVC.h; sourceTree = "<group>"; };
-		1C680F221C3271F2007A2C19 /* RLTabbarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTabbarVC.m; sourceTree = "<group>"; };
-		1C680F2C1C3271F2007A2C19 /* RLNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLNetWorkManager.h; sourceTree = "<group>"; };
-		1C680F2D1C3271F2007A2C19 /* RLNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLNetWorkManager.m; sourceTree = "<group>"; };
 		1C680F2F1C3271F2007A2C19 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1C680F301C3271F2007A2C19 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1C680F311C3271F2007A2C19 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -152,8 +150,7 @@
 		1C680F201C3271F2007A2C19 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1C680F211C3271F2007A2C19 /* RLTabbarVC.h */,
-				1C680F221C3271F2007A2C19 /* RLTabbarVC.m */,
+				0E0B1A7A1CBB550F00EE1D05 /* RLTabbarVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -161,8 +158,7 @@
 		1C680F2B1C3271F2007A2C19 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
-				1C680F2C1C3271F2007A2C19 /* RLNetWorkManager.h */,
-				1C680F2D1C3271F2007A2C19 /* RLNetWorkManager.m */,
+				0E0B1A7C1CBB759600EE1D05 /* RLNetWorkManager.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -378,18 +374,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0B1A7B1CBB550F00EE1D05 /* RLTabbarVC.swift in Sources */,
 				0E7C73BA1CA90BA600A95E73 /* RLReplyCell.swift in Sources */,
 				0E6C1EE91CACD6480064CAC8 /* RLMember.swift in Sources */,
 				0E73E7121C97F22100D5203B /* RLNodesHeadView.swift in Sources */,
 				0E5302181CAB64AB0050F2F8 /* NSString+Extension.swift in Sources */,
 				1C680F461C3271F2007A2C19 /* main.m in Sources */,
-				1C680F441C3271F2007A2C19 /* RLNetWorkManager.m in Sources */,
 				0E5961901CAE3F34007B11DD /* RLTopicCell.swift in Sources */,
 				0E59618E1CAE1766007B11DD /* RLTopicReply.swift in Sources */,
+				0E0B1A7D1CBB759600EE1D05 /* RLNetWorkManager.swift in Sources */,
 				0E6A00B31CAA1F9100BF50AF /* RLTopicsTool.swift in Sources */,
 				1C680F451C3271F2007A2C19 /* AppDelegate.m in Sources */,
 				0E6C1EE71CACCB300064CAC8 /* RLNode.swift in Sources */,
-				1C680F3F1C3271F2007A2C19 /* RLTabbarVC.m in Sources */,
 				0E7C73BC1CA90DDF00A95E73 /* RLTopicsTVC.swift in Sources */,
 				0E53021E1CAB9D7C0050F2F8 /* RLDefine.swift in Sources */,
 				0E6A1DA21CA22A5D00845CC5 /* RLNodeTopicsTVC.swift in Sources */,

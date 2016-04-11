@@ -7,6 +7,5 @@
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
-#import "RLNetWorkManager.h"
-
 #import "UIButton+WebCache.h"
+#import "AFNetWorking.h"

@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RLTabbarVC.h"
 
 @interface AppDelegate ()
 

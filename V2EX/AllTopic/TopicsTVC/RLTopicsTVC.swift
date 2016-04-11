@@ -34,22 +34,27 @@ class RLTopicsTVC: UITableViewController {
     var pageSelected:RLPageSelected = .RecentTopics//最新or最热
     /**保存数据模型数组*/
     private lazy var topics:NSMutableArray = {[]}()
-    let header = MJRefreshNormalHeader()
-    let footer = MJRefreshAutoNormalFooter()
+    private lazy var header:MJRefreshNormalHeader = {
+        let refleshHeader = MJRefreshNormalHeader()
+        refleshHeader.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.refreshData))
+        return refleshHeader
+    }()
+    private lazy var footer:MJRefreshAutoNormalFooter = {
+        let refleshFooter = MJRefreshAutoNormalFooter()
+        refleshFooter.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.loadMore))
+        refleshFooter.refreshingTitleHidden = true
+        return refleshFooter
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
+        tagClick(recentBtn)//第一次启动时选中最新,需要放在添加header和footer前,防止重复刷新
         //默认会执行一次refreshData()
-        header.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.tagClick(_:)))
         self.tableView.mj_header = header
         //默认会执行一次loadMore()
-        footer.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.tagClick(_:)))
-        footer.refreshingTitleHidden = true
         self.tableView.mj_footer = footer
-        
-        tagClick(recentBtn)//第一次启动时选中最新
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,14 +62,14 @@ class RLTopicsTVC: UITableViewController {
         self.scrollViewDidScroll(self.tableView)
     }
     //MARK: - action方法
-    private func refreshData() {
+    @objc private func refreshData() {
         if header.state == .Refreshing {
             RLTopicsTool.shareTopicsTool.currentPageIdx = 1
             self.topics.removeAllObjects()
             loadData()
         }
     }
-    private func loadMore() {
+    @objc private func loadMore() {
         if pageSelected == .PopTopics {
             dispatch_async(dispatch_get_main_queue(), {
                 [weak self] in
@@ -82,8 +87,6 @@ class RLTopicsTVC: UITableViewController {
     //因为selector是OC中运行时的产物，Swift是静态语言，虽然继承自NSObject的类默认对ObjC运行时是可见的，但如果方法是由private关键字修饰的，则方法默认情况下对ObjC运行时并不是可见的。如果我们的类是纯Swift类，而不是继承自NSObject，则不管方法是private还是internal或public，如果要用在Selector中，都需要加上@objc修饰符。
     @objc private func tagClick(btn:UIButton) {
         if btn == recentBtn {
-            let footer =  MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadMore()))
-            footer.refreshingTitleHidden = true
             self.tableView.mj_footer = footer
             
             recentBtn.selected = true
@@ -91,6 +94,7 @@ class RLTopicsTVC: UITableViewController {
             pageSelected = .RecentTopics
         } else {
             self.tableView.mj_footer = nil
+            
             popBtn.selected = true
             recentBtn.selected = false
             pageSelected = .PopTopics
@@ -99,17 +103,20 @@ class RLTopicsTVC: UITableViewController {
     }
     //MARK: - 私有方法
     private func loadData() {
-        RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
-            if let strongSelf = self {
-                strongSelf.topics = NSMutableArray.init(array: topics)
-                //在主线程刷新UI
-                dispatch_async(dispatch_get_main_queue(), { 
-                    strongSelf.tableView.reloadData()
-                    strongSelf.tableView.mj_header.endRefreshing()
-                    strongSelf.tableView.mj_footer.endRefreshing()
-                })
-            }
-            }, option: pageSelected)
+        //只有处于刷新状态才请求网络,防止重复请求
+        if header.state == .Refreshing || footer.state == .Refreshing {
+            RLTopicsTool.shareTopicsTool.topicsWithCompletion({ [weak self]  (topics) in
+                if let strongSelf = self {
+                    strongSelf.topics = NSMutableArray.init(array: topics)
+                    //在主线程刷新UI
+                    dispatch_async(dispatch_get_main_queue(), {
+                        strongSelf.tableView.reloadData()
+                        strongSelf.header.endRefreshing()
+                        strongSelf.footer.endRefreshing()
+                    })
+                }
+                }, option: pageSelected)
+        }
     }
     
     private func initUI() {
@@ -139,8 +146,9 @@ class RLTopicsTVC: UITableViewController {
         if cell == nil {
             cell = (RLTopicCell.instantiateFromNib() as! RLTopicCell)
         }
-        
-        cell?.topicModel = (topics[indexPath.row] as! RLTopic)
+        if topics.count > 0 {
+            cell?.topicModel = (topics[indexPath.row] as! RLTopic)
+        }
         return cell!
     }
     //MARK: -UITableViewDelegate
