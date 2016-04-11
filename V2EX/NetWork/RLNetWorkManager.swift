@@ -11,7 +11,7 @@ import UIKit
 typealias successBlock = (response:AnyObject) -> Void
 typealias errorBlock = () -> Void
 
-typealias callBackBlock = (resArr:NSArray) -> Void
+typealias callBackBlock = (resArr:NSMutableArray) -> Void
 
 
 class RLNetWorkManager: NSObject {
@@ -90,25 +90,29 @@ class RLNetWorkManager: NSObject {
         let URLStr = mainURLStr + path
         let url = NSURL.init(string: URLStr)
         
-        var arr = NSMutableArray()
-        var range:NSRange
-        var substring:NSString
+        let arr = NSMutableArray()
+        var range:NSRange = NSRange()
+        var substring:NSString = ""
         
         let operation = NSBlockOperation.init { 
             let data = NSData.init(contentsOfURL: url!)//下载html
             var HTMLStr:NSString = NSString.init(data: data!, encoding: NSUTF8StringEncoding)!
-            while true {
-                range = (HTMLStr.rangeOfString("<td width=\"48\" valign=\"top\" align=\"center\">"))
-                if range.location == NSNotFound {
+            while true {//解析
+                range = (HTMLStr.rangeOfString("<td width=\"48\" valign=\"top\" align=\"center\">"))//起点
+                if range.location == NSNotFound {//跳出
                     break
                 }
-                
-                HTMLStr = (HTMLStr as NSString).rangeOfString("</tr>")
-                substring = HTMLStr.substringToIndex(range.location)
+                HTMLStr = HTMLStr.substringFromIndex(NSMaxRange(range))//截取起点后面的字符串
+                range = HTMLStr.rangeOfString("</tr>")//终点
+                substring = HTMLStr.substringToIndex(range.location)//解析结果
                 arr.addObject(substring)
             }
-            callBackBlock(arr)
+            callBack(resArr: arr)
         }
+        
+        //创建非主队列
+        let queue = NSOperationQueue()
+        queue.addOperation(operation)//operation.start()
         return operation
     }
 }
