@@ -4,4 +4,3 @@ pod 'MJExtension'
 pod 'SDWebImage', '~>3.7'
 pod 'MJRefresh'
 pod 'AFNetworking', '~> 2.0’
-pod 'FMDB'

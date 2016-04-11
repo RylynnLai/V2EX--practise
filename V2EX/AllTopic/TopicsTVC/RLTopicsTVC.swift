@@ -19,7 +19,7 @@ class RLTopicsTVC: UITableViewController {
         btn.frame = CGRectMake(0, 0, tagW * 0.5, 30)
         btn.setTitle("最近", forState: .Normal)
         btn.setBackgroundImage(UIImage.init(named: "tagBG"), forState: .Selected)
-        btn.addTarget(self, action: #selector(RLTopicsTVC.tagClick(UIButton)), forControlEvents: .TouchUpInside)
+        btn.addTarget(self, action: #selector(RLTopicsTVC.tagClick(_:)), forControlEvents: .TouchUpInside)
         return btn
     }()
     private lazy var popBtn:UIButton = {
@@ -27,7 +27,7 @@ class RLTopicsTVC: UITableViewController {
         btn.frame = CGRectMake(tagW * 0.5 - 1, 0, tagW * 0.5, 30)
         btn.setTitle("最热", forState: .Normal)
         btn.setBackgroundImage(UIImage.init(named: "tagBG"), forState: .Selected)
-        btn.addTarget(self, action: Selector("tagClick:"), forControlEvents: .TouchUpInside)
+        btn.addTarget(self, action: #selector(RLTopicsTVC.tagClick(_:)), forControlEvents: .TouchUpInside)
         return btn
     }()
     var currentPageIdx:NSInteger?//当前加载到的页码,20条话题一页(由服务器决定)
@@ -42,10 +42,10 @@ class RLTopicsTVC: UITableViewController {
         super.viewDidLoad()
         initUI()
         //默认会执行一次refreshData()
-        header.setRefreshingTarget(self, refreshingAction: Selector("refreshData"))
+        header.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.tagClick(_:)))
         self.tableView.mj_header = header
         //默认会执行一次loadMore()
-        footer.setRefreshingTarget(self, refreshingAction: Selector("loadMore"))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(RLTopicsTVC.tagClick(_:)))
         footer.refreshingTitleHidden = true
         self.tableView.mj_footer = footer
         
@@ -65,32 +65,32 @@ class RLTopicsTVC: UITableViewController {
         }
     }
     private func loadMore() {
-//        if pageSelected == .PopTopics {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                [weak self] in
-//                if let strongSelf = self {
-//                    strongSelf.tableView.mj_footer.endRefreshing()
-//                }
-//            })
-//        }
+        if pageSelected == .PopTopics {
+            dispatch_async(dispatch_get_main_queue(), {
+                [weak self] in
+                if let strongSelf = self {
+                    strongSelf.tableView.mj_footer.endRefreshing()
+                }
+            })
+        }
         if footer.state == .Refreshing {
             let pageIdx = RLTopicsTool.shareTopicsTool.currentPageIdx
             RLTopicsTool.shareTopicsTool.currentPageIdx = pageIdx + 1
             loadData()
         }
     }
-    
-    private func tagClick(btn:UIButton) {
+    //因为selector是OC中运行时的产物，Swift是静态语言，虽然继承自NSObject的类默认对ObjC运行时是可见的，但如果方法是由private关键字修饰的，则方法默认情况下对ObjC运行时并不是可见的。如果我们的类是纯Swift类，而不是继承自NSObject，则不管方法是private还是internal或public，如果要用在Selector中，都需要加上@objc修饰符。
+    @objc private func tagClick(btn:UIButton) {
         if btn == recentBtn {
-//            let footer =  MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadMore()))
-//            footer.refreshingTitleHidden = true
-//            self.tableView.mj_footer = footer
+            let footer =  MJRefreshAutoNormalFooter.init(refreshingTarget: self, refreshingAction: Selector(loadMore()))
+            footer.refreshingTitleHidden = true
+            self.tableView.mj_footer = footer
             
             recentBtn.selected = true
             popBtn.selected = false
             pageSelected = .RecentTopics
         } else {
-//            self.tableView.mj_footer = nil
+            self.tableView.mj_footer = nil
             popBtn.selected = true
             recentBtn.selected = false
             pageSelected = .PopTopics

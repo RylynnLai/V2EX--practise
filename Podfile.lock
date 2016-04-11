@@ -20,11 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
   - MJExtension (3.0.7)
   - MJRefresh (3.0.7)
   - Reachability (3.2)
@@ -34,7 +29,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - FMDB
   - MJExtension
   - MJRefresh
   - Reachability
@@ -42,7 +36,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   MJExtension: 290cc966f0f849b12b6391a38e296e0004ae8e5e
   MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96

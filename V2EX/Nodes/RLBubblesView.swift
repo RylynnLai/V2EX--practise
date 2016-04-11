@@ -9,9 +9,6 @@
 import UIKit
 import QuartzCore
 
-//#define notAnimating 0
-//#define isAnimating 1
-
 
 class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
@@ -40,7 +37,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
                 self.addSubview(nodeBtn)
                 nodesBtnArray.addObject(nodeBtn)
                 
-                nodeBtn.addTarget(self, action: Selector("nodeBtnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
+                nodeBtn.addTarget(self, action: #selector(RLBubblesView.nodeBtnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 
                 xValue += (60 + gap);
                 
@@ -96,7 +93,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func nodeBtnClick(button:RLNodeBtn) {
+    @objc private func nodeBtnClick(button:RLNodeBtn) {
         nodeBtnAction(nodeModel: button.nodeModel!)
     }
     
