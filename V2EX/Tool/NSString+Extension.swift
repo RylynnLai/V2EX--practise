@@ -22,7 +22,7 @@ public extension String {
         formatter.dateFormat = "yyyy-M-d hh:mm:ss a"
         return formatter.stringFromDate(timeDate)
     }
-    public static func creatTimeByTimeIntervalSince1970(timeInterval:NSTimeInterval) -> String  {
+    public static func creatTimeByTimeIntervalSince1970(timeInterval:NSTimeInterval) -> String? {
         let creatTimeDate = NSDate.init(timeIntervalSince1970: timeInterval)
         let nowTimeDate = NSDate.init()
         let sec = nowTimeDate.timeIntervalSinceDate(creatTimeDate)
@@ -35,6 +35,6 @@ public extension String {
         } else if sec >= 60 * 60 * 24 {//天
             timeStr = "\(Int((sec / 60 / 60 + 12) / 24))天前 ●"
         }
-        return timeStr!
+        return timeStr
     }
 }

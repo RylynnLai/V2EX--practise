@@ -14,12 +14,12 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
     // MARk:setter方法
     var nodeModels:NSSet? {
-        didSet{
+        didSet{//带属性监视器,表示nodeModels被设置时调用(即使是设置相同的值也会调用)
             let gutter:CGFloat = 20
             let gap:CGFloat = 5
             
             let num = (self.mj_w * 2 - gutter * 2) / (60 + gap)
-            let rowNum = nodeModels!.count / Int(num)
+            let rowNum = nodeModels!.count / Int(num)//这个optional肯定是有值的
             self.contentSize = CGSizeMake(self.mj_w * 2 + (gutter * 2) - gap, CGFloat(rowNum) * (60 + gap) + (gutter * 2))
             self.contentOffset = CGPointMake(self.contentSize.width / 2 - self.mj_w / 2, self.contentSize.height / 2 - self.mj_h / 2)
             
@@ -29,9 +29,11 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             
             for nodeModel in nodeModels! {
                 let nodeBtn = RLNodeBtn(type:.Custom)
-                nodeBtn.nodeModel = (nodeModel as! RLNode)
+                
+                nodeBtn.nodeModel = nodeModel as? RLNode
+                
                 nodeBtn.frame = CGRectMake(xValue, yValue, 60, 60);
-                nodeBtn.setTitle((nodeModel as! RLNode).title, forState:UIControlState.Normal)
+                nodeBtn.setTitle((nodeModel as? RLNode)!.title, forState:UIControlState.Normal)
                 
                 //                [self addNodeBtnToScrollView:nodeBtn];
                 self.addSubview(nodeBtn)
