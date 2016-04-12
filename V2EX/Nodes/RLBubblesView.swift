@@ -12,7 +12,7 @@ import QuartzCore
 
 class RLBubblesView: UIScrollView, UIScrollViewDelegate {
 
-    // MARk:setter方法
+    // MARk: -setter方法
     var nodeModels:NSSet? {
         didSet{//带属性监视器,表示nodeModels被设置时调用(即使是设置相同的值也会调用)
             let gutter:CGFloat = 20
@@ -29,13 +29,13 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             
             for nodeModel in nodeModels! {
                 let nodeBtn = RLNodeBtn(type:.Custom)
-                
-                nodeBtn.nodeModel = nodeModel as? RLNode
-                
                 nodeBtn.frame = CGRectMake(xValue, yValue, 60, 60);
-                nodeBtn.setTitle((nodeModel as? RLNode)!.title, forState:UIControlState.Normal)
                 
-                //                [self addNodeBtnToScrollView:nodeBtn];
+                if let nodeM:RLNode = nodeModel as? RLNode {//解包
+                    nodeBtn.nodeModel = nodeM
+                    nodeBtn.setTitle(nodeM.title, forState:UIControlState.Normal)
+                }
+                
                 self.addSubview(nodeBtn)
                 nodesBtnArray.addObject(nodeBtn)
                 
@@ -55,10 +55,10 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
             }
         }
     }
-    // MARK: 私有变量
+    // MARK: -私有变量
     private var bigSize:CGSize
     private var smallSize:CGSize
-    // MARK: 懒加载
+    // MARK: -懒加载
     private lazy var nodesBtnArray:NSMutableArray = {[]}()
     private lazy var viewBarrierOuter:UIView = {
         let outerView = UIView.init(frame: CGRectMake(self.mj_w / 8, self.mj_h / 8, self.mj_w * 0.75, self.mj_h * 0.75))
@@ -82,7 +82,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
     
     // 声明一个闭包（空），由外部定义，本类调用
     var nodeBtnAction:(nodeModel:RLNode) -> Void = {_ in }
-    // MARK: init
+    // MARK: -init
     override init(frame: CGRect) {
         bigSize = CGSizeMake(60, 60)
         smallSize = CGSizeMake(30, 30)
@@ -94,16 +94,14 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: -Action
     @objc private func nodeBtnClick(button:RLNodeBtn) {
-        nodeBtnAction(nodeModel: button.nodeModel!)
+        if let nodeM = button.nodeModel {
+            nodeBtnAction(nodeModel: nodeM)
+        }
     }
     
-    func addNodeBtnToScrollView(button:RLNodeBtn) {
-        self.addSubview(button)
-        nodesBtnArray.addObject(button)
-    }
-    
+    //MARK: -UIScrollViewDelegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let container = CGRectMake(scrollView.contentOffset.x + (self.viewBarrierOuter.mj_w / 8),
                                    scrollView.contentOffset.y + (self.viewBarrierOuter.mj_h / 8),
