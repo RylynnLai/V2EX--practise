@@ -59,7 +59,8 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
     private var bigSize:CGSize
     private var smallSize:CGSize
     // MARK: -懒加载
-    private lazy var nodesBtnArray:NSMutableArray = {[]}()
+//    private lazy var nodesBtnArray:NSMutableArray = {[]}()
+    private var nodesBtnArray:[RLNodeBtn]
     private lazy var viewBarrierOuter:UIView = {
         let outerView = UIView.init(frame: CGRectMake(self.mj_w / 8, self.mj_h / 8, self.mj_w * 0.75, self.mj_h * 0.75))
         outerView.backgroundColor = UIColor.redColor()
@@ -118,7 +119,7 @@ class RLBubblesView: UIScrollView, UIScrollViewDelegate {
         dispatch_async(fetchQ) {
             
             for item in self.nodesBtnArray {
-                let nodeBtn:RLNodeBtn = item as! RLNodeBtn
+                let nodeBtn:RLNodeBtn = item as? RLNodeBtn
                 let thePosition = nodeBtn.frame;
 
                 if CGRectIntersectsRect(containerTwo, thePosition) {
