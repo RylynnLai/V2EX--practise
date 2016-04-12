@@ -24,13 +24,13 @@ class RLNodesHeadView: UIView {
             //标题
             _titleLable.text = nodeModel!.title;
             //icon (oc swift混用)
-            let iconURL = NSURL.init(string: "https:\(nodeModel!.avatar_normal)")
+            let iconURL = NSURL.init(string: "https:\(nodeModel!.avatar_normal!)")
             _iconImgV.sd_setImageWithURL(iconURL, placeholderImage: UIImage.init(named: "blank"))
             
             //话题数
             _topicsNumLable.text = nodeModel?.topics
             //星
-            _startsNumLable.text = "★\(nodeModel!.stars)"
+            _startsNumLable.text = "★\(nodeModel!.stars!)"
             //描述
             _descriptionLable.text = nodeModel?.header
         }

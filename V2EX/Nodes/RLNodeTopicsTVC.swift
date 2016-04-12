@@ -45,7 +45,7 @@ class RLNodeTopicsTVC: UITableViewController {
         self.title = nodeModel?.title
         self.headView.nodeModel = nodeModel
         //获取完整的节点数据
-        let path = "/api/nodes/show.json?id=\(nodeModel!.ID)"
+        let path = "/api/nodes/show.json?id=\(nodeModel!.ID!)"
         RLNetWorkManager.defaultNetWorkManager.requestWithPath(path, success: { [weak self] (response) -> Void in
             if let strongSelf = self {//如果self还没被释放（即当前还是强引用）
                 strongSelf.nodeModel = RLNode.mj_objectWithKeyValues(response)
@@ -66,7 +66,6 @@ class RLNodeTopicsTVC: UITableViewController {
                 }
                 }, failure: { () -> Void in
                 self.tableView.mj_header.endRefreshing()
-                    
             })
         }
     }
